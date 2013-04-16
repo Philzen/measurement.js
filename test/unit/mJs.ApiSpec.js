@@ -1,5 +1,3 @@
-
-
 'use strict';
 
 describe("MeasurementJs API: ", function() {
@@ -14,11 +12,11 @@ describe("MeasurementJs API: ", function() {
 			someUnit = 'km/h',
 			someOtherUnit = 'm';
 
-		it("returns an Object", function() {
+		it("returns an Object, which", function() {
 			expect(typeof convertFunction).toBe('object');
 		});
 
-		it("which has a from() and a to() function", function() {
+		it("has a from() and a to() function", function() {
 			expect(convertFunction.from).toBeDefined();
 			expect(convertFunction.to).toBeDefined();
 		});
