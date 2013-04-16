@@ -1,9 +1,17 @@
 MeasurementJs
 =============
 
+`measurement('Distance').convert(1).from(Distance.KILOMETRES).to(Distance.METRES)`
+
+
 ### Running the Test Suite (Jasmine)
 
 Just view test/index.html in the browser to test.
+
+### Project status
+
+WIP / tbc (This repository is just a few days young)
+
 
 ### Inspiring projects
 
