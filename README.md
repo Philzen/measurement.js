@@ -2,7 +2,7 @@ MeasurementJs
 =============
 
 ``` js
-measurement('Distance').convert(1).from(Distance.KILOMETRES).to(Distance.METRES)
+measurement('Distance').convert(1).from(Distance.KILOMETRES).to(Distance.METRES)    // returns 1000
 ```
 
 ### Running the Test Suite (Jasmine)
