@@ -4,11 +4,6 @@
 
 describe("MeasurementJs API: ", function() {
 
-	it("can have custom namespace (window.mJsNamespace = YourNamespace before measurement.js include)", function(){
-		expect(OurCoolCustomNamespace.changeIT.measurement).toBeDefined();		
-	});
-
-	var measurement = OurCoolCustomNamespace.changeIT.measurement;
 	it("has a convert() function", function() {
 		expect(typeof measurement().convert).toBe('function');
 	});
