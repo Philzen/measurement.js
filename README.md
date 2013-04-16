@@ -1,5 +1,8 @@
-MeasurementJs
+[![Build Status](https://travis-ci.org/Philzen/measurement.js.png?branch=master)](https://travis-ci.org/Philzen/measurement.js)
+
+MeasurementJs   
 =============
+Nice measurement conversion.
 
 ``` js
 measurement('Distance').convert(1).from(Distance.KILOMETRES).to(Distance.METRES)    // returns 1000
