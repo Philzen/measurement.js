@@ -65,7 +65,6 @@ var mJsNamespace = mJsNamespace || window;
 				var outputDef = DEFINITIONS[unitTypes][outputUnit];
 				if (inputDef && outputDef) {
 					if (inputDef.base === outputUnit) {
-						console.log(inputDef.factor, value)
 						return value * inputDef.factor;
 					}					
 				}
