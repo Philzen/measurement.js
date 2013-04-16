@@ -17,27 +17,67 @@ var mJsNamespace = mJsNamespace || window;
  * @returns {undefined}
  */
 (function(namespace) {
-	
+
 	namespace.measurement = MeasurementJs;
 	namespace.measurement.Converter = MeasurementConverter;
-	
+
 	namespace.mJs = namespace.MeasurementJs;
 
-	function MeasurementConverter() {
+	var DEFINITIONS = {
+		Distance: {
+			'km': {
+				base: 'm',
+				factor: 1000,
+				name: {
+					de: 'Kilometer',
+					en: 'Kilometer',
+					en_GB: 'Kilometre'
+				},
+				plural: {
+					en: 'Kilometers',
+					en_GB: 'Kilometres'
+				}
+			},
+			'm': {
+				base: null, // equals factor of 1
+				name: {
+					de: 'Meter',
+					en: 'Meter',
+					en_GB: 'Metre'
+				},
+				plural: {
+					en: 'Meters',
+					en_GB: 'Metres'
+				}
+			}
+		}
+	};
 
-		var inputUnit = null,
+	function MeasurementConverter(UnitType) {
+		var unitTypes = UnitType,
+			inputUnit = null,
 			outputUnit = null,
 			self = this;
 
 		this.convert = function(value) {
-			return 3;
+			if (DEFINITIONS[unitTypes]) {
+				var inputDef = DEFINITIONS[unitTypes][inputUnit];
+				var outputDef = DEFINITIONS[unitTypes][outputUnit];
+				if (inputDef && outputDef) {
+					if (inputDef.base === outputUnit) {
+						console.log(inputDef.factor, value)
+						return value * inputDef.factor;
+					}					
+				}
+			}
+				return 3;
 		};
 
 		this.inputUnit = null;
 		this.setInputUnit = function(unit) {
 			inputUnit = unit || null;
 			this.inputUnit = inputUnit;
-			
+
 			return self;
 		};
 
@@ -50,7 +90,7 @@ var mJsNamespace = mJsNamespace || window;
 		};
 	}
 
-	function MeasurementJs() {
+	function MeasurementJs(UnitType) {
 
 		/**
 		 * 
@@ -58,29 +98,31 @@ var mJsNamespace = mJsNamespace || window;
 		 * @returns {MeasurementConverter}
 		 */
 		this.convert = function(value) {
-			var converter = new MeasurementConverter(value);
+			var valueToConvert = value,
+				converter = new MeasurementConverter(UnitType);
 
 			function readyToConvert() {
 				return converter.inputUnit !== null && converter.outputUnit !== null;
-			};
-			
+			}
+			;
+
 			var easyApiConverter = {
 				from: function(inputUnit) {
 					converter.setInputUnit(inputUnit);
 					if (readyToConvert())
-						return converter.convert();
-					
+						return converter.convert(valueToConvert);
+
 					return this;
 				},
 				to: function(outputUnit) {
 					converter.setOutputUnit(outputUnit);
 					if (readyToConvert())
-						return converter.convert();
-					
+						return converter.convert(valueToConvert);
+
 					return this;
 				}
 			};
-			
+
 			return easyApiConverter;
 		};
 		return this;
@@ -90,4 +132,14 @@ var mJsNamespace = mJsNamespace || window;
 
 })(mJsNamespace);
 
-
+mJsNamespace.measurement.Unit = {
+	Speed: {
+		MILES_PER_HOUR: 'mph',
+		KILOMETRE_PER_HOUR: 'km/h',
+		METRE_PER_SECOND: 'm/s'
+	},
+	Distance: {
+		KILOMETRES: 'km',
+		METRES: 'm'
+	}
+};

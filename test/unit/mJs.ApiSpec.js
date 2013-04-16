@@ -7,9 +7,10 @@ describe("MeasurementJs API: ", function() {
 	});
 
 	describe("measurement().convert(someValue)", function() {
-		var convertFunction = measurement().convert(1),
-			convertFunction2 = measurement().convert(2),
-			someUnit = 'km/h',
+		var testUnitType = measurement.Unit.Distance,
+			convertFunction = measurement(testUnitType).convert(1),
+			convertFunction2 = measurement(testUnitType).convert(2),
+			someUnit = 'km',
 			someOtherUnit = 'm';
 
 		it("returns an Object, which", function() {
