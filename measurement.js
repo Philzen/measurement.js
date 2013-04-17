@@ -95,19 +95,19 @@ var mJsNamespace = mJsNamespace || window;
 			if (DEFINITIONS[unitTypes]) {
 				var inputDef = DEFINITIONS[unitTypes][inputUnit];
 				var outputDef = DEFINITIONS[unitTypes][outputUnit];
-				console.log(value, inputDef, outputDef);
 				if (inputDef && outputDef) {
 					if (inputDef.base === outputUnit) {
-						console.log('inputDef.base === outputUnit', inputUnit, outputUnit)
 						return value / inputDef.factor;
 					} else if(inputDef.key === outputDef.base && outputUnit === outputDef.key) {
-						console.log('hier?', inputUnit, outputUnit)
 						return value * outputDef.factor;
 					}
+					
+					// TODO else convert input value to base value and re-iterate
 				}
-				console.log('-- nix')
+				console.log(value, inputDef, outputDef);
+				console.log('ToDo!');
 			}
-			return 3;
+			return -9999;
 		};
 
 		this.inputUnit = null;
