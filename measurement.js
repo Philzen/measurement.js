@@ -23,11 +23,42 @@ var mJsNamespace = mJsNamespace || window;
 
 	namespace.mJs = namespace.MeasurementJs;
 
-	var DEFINITIONS = {
+	namespace.measurement.Unit = {
+		Speed: {
+			MILES_PER_HOUR: 'mph',
+			KILOMETRE_PER_HOUR: 'km/h',
+			METRE_PER_SECOND: 'm/s'
+		},
+		Distance: {
+			KILOMETRES: 'km',
+			MILES: 'M',
+			METRES: 'm',
+			YARDS: 'y'
+		}
+	};
+
+	var speedUnit = namespace.measurement.Unit.Speed,
+		DEFINITIONS = {
+		Speed: {
+			'mph': {
+				key: speedUnit.MILES_PER_HOUR,
+				base: speedUnit.METRE_PER_SECOND,
+				factor: 1/0.44704
+			},
+			'km/h': {
+				key: speedUnit.KILOMETRE_PER_HOUR,
+				base: speedUnit.METRE_PER_SECOND,
+				factor: 3.6
+			},
+			'm/s': {
+				key: speedUnit.METRE_PER_SECOND,
+				base: null
+			}
+		},
 		Distance: {
 			'km': {
 				base: 'm',
-				factor: 1000,
+				factor: 0.001,
 				name: {
 					de: 'Kilometer',
 					en: 'Kilometer',
@@ -60,16 +91,23 @@ var mJsNamespace = mJsNamespace || window;
 			self = this;
 
 		this.convert = function(value) {
+
 			if (DEFINITIONS[unitTypes]) {
 				var inputDef = DEFINITIONS[unitTypes][inputUnit];
 				var outputDef = DEFINITIONS[unitTypes][outputUnit];
+				console.log(value, inputDef, outputDef);
 				if (inputDef && outputDef) {
 					if (inputDef.base === outputUnit) {
-						return value * inputDef.factor;
-					}					
+						console.log('inputDef.base === outputUnit', inputUnit, outputUnit)
+						return value / inputDef.factor;
+					} else if(inputDef.key === outputDef.base && outputUnit === outputDef.key) {
+						console.log('hier?', inputUnit, outputUnit)
+						return value * outputDef.factor;
+					}
 				}
+				console.log('-- nix')
 			}
-				return 3;
+			return 3;
 		};
 
 		this.inputUnit = null;
@@ -127,18 +165,4 @@ var mJsNamespace = mJsNamespace || window;
 		return this;
 	}
 
-
-
 })(mJsNamespace);
-
-mJsNamespace.measurement.Unit = {
-	Speed: {
-		MILES_PER_HOUR: 'mph',
-		KILOMETRE_PER_HOUR: 'km/h',
-		METRE_PER_SECOND: 'm/s'
-	},
-	Distance: {
-		KILOMETRES: 'km',
-		METRES: 'm'
-	}
-};
