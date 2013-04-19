@@ -54,6 +54,7 @@ page.onConsoleMessage = function(msg) {
 };
 
 page.open(system.args[1], function(status) {
+
 	if (status !== "success") {
 		console.log("Unable to access network");
 		phantom.exit();
@@ -63,25 +64,54 @@ page.open(system.args[1], function(status) {
 				return document.body.querySelector('.symbolSummary .pending') === null;
 			});
 		}, function() {
+
 			var exitCode = page.evaluate(function() {
-				console.log('');
-				console.log(document.body.querySelector('.description').innerText);
-				var list = document.body.querySelectorAll('.results > #details > .specDetail.failed');
+				var colors = {
+					red: '\u001b[31m',
+					blue: '\u001b[34m',
+					green: '\u001b[32m',
+					reset: '\u001b[0m'
+				};
+
+				var symbols = {
+					ok: '\u221A',
+					err: '\u00D7'
+				};
+
+				var list = document.body.querySelectorAll('.results > #details > .specDetail.failed'),
+					i;
+
+				console.log(colors.blue + 'TEST RESULTS: ');
+
 				if (list && list.length > 0) {
 					console.log('');
-					console.log(list.length + ' test(s) FAILED:');
+					console.log(colors.reset + colors.red + list.length + ' test(s) FAILED:');
 					for (i = 0; i < list.length; ++i) {
 						var el = list[i],
 							desc = el.querySelector('.description'),
 							msg = el.querySelector('.resultMessage.fail');
 						console.log('');
-						console.log(desc.innerText);
-						console.log(msg.innerText);
+						console.log(symbols.err + '   ' + desc.innerText);
+						console.log(colors.reset + msg.innerText + colors.red);
 						console.log('');
 					}
 					return 1;
 				} else {
-					// To Do print out more infos on passed tests
+					var passedBlocks = document.body.querySelectorAll('.results > .summary > .suite.passed > .description'),
+						indents = '   ', i, j;
+
+					console.log(colors.reset + colors.green);
+					for (i = 0; i < passedBlocks.length; i++) {
+						console.log(colors.reset + passedBlocks[i].innerText);
+						var blockDescriptions = passedBlocks[i].parentNode.querySelectorAll('.specSummary.passed > .description');
+
+						for (j = 0; j < blockDescriptions.length; j++) {
+							if (blockDescriptions[j].title)
+								console.log(colors.green + symbols.ok + indents + blockDescriptions[j].innerText);
+						}
+						console.log('');
+					}
+
 					console.log(document.body.querySelector('.alert > .passingAlert.bar').innerText);
 					return 0;
 				}
