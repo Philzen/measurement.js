@@ -97,21 +97,35 @@ page.open(system.args[1], function(status) {
 					}
 					return 1;
 				} else {
-					var passedBlocks = document.body.querySelectorAll('.results > .summary > .suite.passed > .description'),
-						indents = '   ', i, j;
+					var passedSuites = document.body.querySelector('.results > .summary'),
+						indents = '', currentRecursionLevel = 0;
 
-					console.log(colors.reset + colors.green);
-					for (i = 0; i < passedBlocks.length; i++) {
-						console.log(colors.reset + passedBlocks[i].innerText);
-						var blockDescriptions = passedBlocks[i].parentNode.querySelectorAll('.specSummary.passed > .description');
-
-						for (j = 0; j < blockDescriptions.length; j++) {
-							if (blockDescriptions[j].title)
-								console.log(colors.green + symbols.ok + indents + blockDescriptions[j].innerText);
+					function recursiveSpecOutput(element) {
+						currentRecursionLevel++;
+						if (currentRecursionLevel > 1)
+							indents += '   ';
+						var returnString = '', i, 
+							children = element.children;
+						
+						for (i = 0; i < children.length; i++) {
+							if(children[i].attributes['class'].value === 'suite passed' && currentRecursionLevel < 5)
+								returnString += recursiveSpecOutput(children[i]);
+							else if (children[i].attributes['class'].value === 'description')
+								returnString += indents + colors.reset + children[i].innerText.trim() + "\n";
+							else if (children[i].attributes['class'].value === 'specSummary passed')
+								returnString += indents + colors.green + symbols.ok + ' ' +children[i].innerText.trim() + " \n";
+							
 						}
-						console.log('');
+						currentRecursionLevel--;
+						indents = indents.substr(3, indents.length-1)
+						if (currentRecursionLevel === 1)
+							returnString += "\n";
+						
+						return returnString;
 					}
 
+					console.log(recursiveSpecOutput(passedSuites));
+					console.log(colors.reset + colors.green);
 					console.log(document.body.querySelector('.alert > .passingAlert.bar').innerText);
 					return 0;
 				}
