@@ -27,7 +27,8 @@ var mJsNamespace = mJsNamespace || window;
 		Speed: {
 			MILES_PER_HOUR: 'mph',
 			KILOMETRE_PER_HOUR: 'km/h',
-			METRE_PER_SECOND: 'm/s'
+			METRE_PER_SECOND: 'm/s',
+			KNOT: 'kn'
 		},
 		Distance: {
 			KILOMETRES: 'km',
@@ -42,23 +43,28 @@ var mJsNamespace = mJsNamespace || window;
 		Speed: {
 			'mph': {
 				key: speedUnit.MILES_PER_HOUR,
-				base: speedUnit.METRE_PER_SECOND,
-				factor: 1/0.44704
+				base: speedUnit.KILOMETRE_PER_HOUR,
+				factor: 1.609344
 			},
 			'km/h': {
 				key: speedUnit.KILOMETRE_PER_HOUR,
-				base: speedUnit.METRE_PER_SECOND,
-				factor: 3.6
+				base: null
 			},
 			'm/s': {
 				key: speedUnit.METRE_PER_SECOND,
-				base: null
+				base: speedUnit.KILOMETRE_PER_HOUR,
+				factor: 3.6
+			},
+			'kn': {
+				key: speedUnit.KNOT,
+				base: speedUnit.KILOMETRE_PER_HOUR,
+				factor: 1.852
 			}
 		},
 		Distance: {
 			'km': {
 				base: 'm',
-				factor: 0.001,
+				factor: 1000,
 				name: {
 					de: 'Kilometer',
 					en: 'Kilometer',
@@ -97,9 +103,9 @@ var mJsNamespace = mJsNamespace || window;
 				if (inputDef && outputDef) {
 					
 					if (inputDef.base === outputUnit) {
-						return value / inputDef.factor;
+						return value * inputDef.factor;
 					} else if(inputDef.key === outputDef.base) {
-						return value * outputDef.factor;
+						return value / outputDef.factor;
 					} else {
 						/**
 						 * TODO use direct reconversion factors, while trading off the higher accuracy / performance

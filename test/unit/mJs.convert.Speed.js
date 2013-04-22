@@ -15,7 +15,7 @@ describe("measurement.Unit.Speed", function() {
 	});
 
 	var convertSpeed = measurement('Speed').convert;
-	describe("var convertSpeed = measurementJs('Speed').convert;", function() {
+	describe("var convertSpeed = measurement('Speed').convert,\n    speedUnit = measurement.Unit.Speed;", function() {
 		it("returns 36 for convertSpeed(10).from(speedUnit.METRE_PER_SECOND).to(speedUnit.KILOMETRE_PER_HOUR)", function() {
 			expect(
 				convertSpeed(10).from(speedUnit.METRE_PER_SECOND).to(speedUnit.KILOMETRE_PER_HOUR)
@@ -28,17 +28,24 @@ describe("measurement.Unit.Speed", function() {
 				).toBe(10);
 		});
 
-		it("returns 80.5297065 for ...(36).from(speedUnit.METRE_PER_SECOND).to(speedUnit.MILES_PER_HOUR)", function() {
+		it("returns 80.5297065 for convertSpeed(36).from(speedUnit.METRE_PER_SECOND).to(speedUnit.MILES_PER_HOUR)", function() {
 			expect(
 				parseFloat((convertSpeed(36).from(speedUnit.METRE_PER_SECOND).to(speedUnit.MILES_PER_HOUR)).toFixed(8))
 				).toBe(80.52970651);
 		});
 
-		it("returns 6.21371192 for mJs('Speed').convert(10).from(speedUnit.KILOMETRE_PER_HOUR).to(speedUnit.MILES_PER_HOUR)", function() {
+		it("returns 6.21371192 for convertSpeed(10).from(speedUnit.KILOMETRE_PER_HOUR).to(speedUnit.MILES_PER_HOUR)", function() {
 			expect(
 				parseFloat((convertSpeed(10).from(speedUnit.KILOMETRE_PER_HOUR).to(speedUnit.MILES_PER_HOUR)).toFixed(8))
 				).toBe(6.21371192);
 		});
+
+		it("returns 4.63 for convertSpeed( 9 ).from( speedUnit.KNOT ).to( speedUnit.MILES_PER_HOUR )", function() {
+			expect(
+				(convertSpeed( 9 ).from(speedUnit.KNOT).to(speedUnit.METRE_PER_SECOND))
+			).toBe(4.63);
+		});
+
 
 	});
 });
