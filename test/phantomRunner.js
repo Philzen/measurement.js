@@ -1,5 +1,7 @@
 /**
  * run-jasmine.js from https://github.com/ariya/phantomjs/blob/master/examples/run-jasmine.js
+ * 
+ * Modified by [Philzen](github.com/philzen) adding colorful, mocha-like output
  */
 
 var system = require('system');
@@ -117,7 +119,7 @@ page.open(system.args[1], function(status) {
 							
 						}
 						currentRecursionLevel--;
-						indents = indents.substr(3, indents.length-1)
+						indents = indents.substr(3, indents.length-1);
 						if (currentRecursionLevel === 1)
 							returnString += "\n";
 						
