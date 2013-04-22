@@ -33,11 +33,11 @@ describe("measurement.Unit.Speed", function() {
 				).toBe(80.52970651);
 		});
 
-//		it("returns 80.5297065 for mJs('Speed').convert(10).from(speedUnit.KILOMETRE_PER_HOUR).to(speedUnit.MILES_PER_HOUR)", function() {
-//			expect(
-//				parseFloat((measurement('Speed').convert(10).from(speedUnit.KILOMETRE_PER_HOUR).to(speedUnit.MILES_PER_HOUR)).toFixed(8))
-//				).toBe(80.52970651);
-//		});
+		it("returns 6.21371192 for mJs('Speed').convert(10).from(speedUnit.KILOMETRE_PER_HOUR).to(speedUnit.MILES_PER_HOUR)", function() {
+			expect(
+				parseFloat((measurement('Speed').convert(10).from(speedUnit.KILOMETRE_PER_HOUR).to(speedUnit.MILES_PER_HOUR)).toFixed(8))
+				).toBe(6.21371192);
+		});
 
 	});
 });

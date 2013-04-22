@@ -84,30 +84,46 @@ var mJsNamespace = mJsNamespace || window;
 		}
 	};
 
-	function MeasurementConverter(UnitType) {
-		var unitTypes = UnitType,
-			inputUnit = null,
+	function MeasurementConverter(unitType) {
+		var inputUnit = null,
 			outputUnit = null,
 			self = this;
 
 		this.convert = function(value) {
-
-			if (DEFINITIONS[unitTypes]) {
-				var inputDef = DEFINITIONS[unitTypes][inputUnit];
-				var outputDef = DEFINITIONS[unitTypes][outputUnit];
+			
+			if (DEFINITIONS[unitType]) {
+				var inputDef = DEFINITIONS[unitType][inputUnit],
+				outputDef = DEFINITIONS[unitType][outputUnit];
 				if (inputDef && outputDef) {
+					
 					if (inputDef.base === outputUnit) {
 						return value / inputDef.factor;
-					} else if(inputDef.key === outputDef.base && outputUnit === outputDef.key) {
+					} else if(inputDef.key === outputDef.base) {
 						return value * outputDef.factor;
+					} else {
+						/**
+						 * TODO use direct reconversion factors, while trading off the higher accuracy / performance
+						 * vs. larger configuration array/file size 
+						 */
+						var baseType = inputDef.base || outputDef.base, baseValue;
+						if (baseType === inputDef.base) {
+							baseValue = MeasurementJs(unitType).convert(value).from(inputDef.key).to(inputDef.base);
+							inputUnit = inputDef.base;
+						} else if (baseType === outputDef.base) {
+							baseValue = MeasurementJs(unitType).convert(value).from(outputDef).to(outputDef.base);
+							inputUnit = outputDef.base;
+						}
+						if (typeof baseType === 'undefined')
+							return false;
+						
+						return self.convert(baseValue);
 					}
-					
-					// TODO else convert input value to base value and re-iterate
 				}
 				console.log(value, inputDef, outputDef);
 				console.log('ToDo!');
 			}
-			return -9999;
+			
+			return false;
 		};
 
 		this.inputUnit = null;
