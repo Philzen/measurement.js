@@ -54,8 +54,14 @@ describe("measurement.Unit.Speed", function() {
 
 		it("returns 25.200311  for convertSpeed( 29 ).from( speedUnit.MILES_PER_HOUR ).to( speedUnit.KNOT )", function() {
 			expect(
-				parseFloat(convertSpeed( 29 ).from( speedUnit.MILES_PER_HOUR ).to( speedUnit.KNOT ).toFixed(6))
+				parseFloat(convertSpeed( 29 ).from( speedUnit.MILES_PER_HOUR ).to( speedUnit.KNOT ).toFixed(7))
 			).toBe(25.200311);
+		});
+
+		it("returns ~29        for convertSpeed( 25.200311 ).from( speedUnit.KNOT ).to( speedUnit.MILES_PER_HOUR )", function() {
+			expect(
+				parseFloat(convertSpeed( 25.200311 ).from( speedUnit.KNOT ).to( speedUnit.MILES_PER_HOUR ).toFixed(7))
+			).toBe(29);
 		});
 
 	});
