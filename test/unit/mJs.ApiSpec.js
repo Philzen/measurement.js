@@ -34,7 +34,7 @@ describe("MeasurementJs API: ", function() {
 				expect(fromSomeUnitReturn).toBe(convertFunction);
 			});
 
-			it("returns a value when from(someOtherUnit) is called on the returned object", function() {
+			it("returns a value when to(someOtherUnit) is called on the returned object", function() {
 				expect(fromSomeUnitReturn.to(someOtherUnit)).toBeDefined();
 			});
 		});
@@ -53,7 +53,7 @@ describe("MeasurementJs API: ", function() {
 				expect(toSomeUnitReturn).toBe(convertFunction2);
 			});
 
-			it("returns a value when to(someOtherUnit) is called on the returned object", function() {
+			it("returns a value when from(someOtherUnit) is called on the returned object", function() {
 				expect(convertFunction2.to(someUnit).from(someOtherUnit)).toBeDefined();
 			});
 		});
