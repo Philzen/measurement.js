@@ -5,17 +5,19 @@ MeasurementJs
 Nice measurement conversion.
 
 ``` js
-measurement('Distance').convert(1).from(Distance.KILOMETRES).to(Distance.METRES)    // returns 1000
+measurement('Distance').convert(1).from(Distance.KILOMETRES).to(Distance.METRES);               // returns 1000
+measurement('Speed').convert(10).from(Speed.KILOMETRE_PER_HOUR).to(Speed.METRES_PER_SECOND);    // returns 36
 ```
 
-### Running the Test Suite (Jasmine)
+### Test-Driven Development
 
-Just view test/index.html in the browser to test.
+The API definition and all conversion operations are covered by jasmine tests.
+To run them, just open test/index.html in a browser.  
+Alternatively, the test suite may be run on the console through phantomjs: `phantomjs test/phantomRunner.js test/index.html`
 
 ### Project status
 
-WIP / tbc (This repository is just a few days young)
-
+For current and future state of affairs, have a peek at the [Roadmap|ROADMAP.md] in the root project folder.
 
 ### Inspiring projects
 
