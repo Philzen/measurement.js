@@ -17,7 +17,7 @@ Alternatively, the test suite may be run on the console through phantomjs: `phan
 
 ### Project status
 
-For current and future state of affairs, have a peek at the [Roadmap|ROADMAP.md] in the root project folder.
+For current and future state of affairs, have a peek at the [Roadmap](ROADMAP.md) in the root project folder.
 
 ### Inspiring projects
 
