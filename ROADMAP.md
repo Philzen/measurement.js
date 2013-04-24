@@ -1,11 +1,10 @@
-
 v0.1  
 ----
 
 ✔ Set up completely test-driven project with contiuous integration on Travis CI  
 ✔ Implement easy-to-use, behaviour driven API  
-- Implement basic conversions for 
-    ✔ Speed  
+- Implement basic conversions for  
+	✔ Speed  
 	- Pressure  
 	- Distance  
     - Temperature  
