@@ -1,6 +1,10 @@
 'use strict';
 
 describe("MeasurementJs API: ", function() {
+	
+	it("first call (i.e. `measurementJs('Speed')` can be kept as reference", function() {
+		expect(typeof measurement('Speed')).toBe('object');
+	});
 
 	it("has a convert() function", function() {
 		expect(typeof measurement().convert).toBe('function');
