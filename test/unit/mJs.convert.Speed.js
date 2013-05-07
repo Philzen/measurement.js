@@ -2,7 +2,7 @@
 describe("measurement.Unit.Speed", function() {
 	expect(measurement.Unit.Speed).toBeDefined();
 
-	var speedUnit = mJsNamespace.measurement.Unit.Speed;
+	var speedUnit = measurement.Unit.Speed;
 	it('is an object', function() {
 		expect(typeof speedUnit).toBe('object');
 	});
