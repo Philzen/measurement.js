@@ -35,10 +35,16 @@ var mJsNamespace = mJsNamespace || window;
 			MILES: 'M',
 			METRES: 'm',
 			YARDS: 'y'
+		},
+		Pressure: {
+			HECTOPASCAL: 'hPa',
+			PASCAL: 'Pa',
+			BAR: 'bar'
 		}
 	};
 
 	var speedUnit = namespace.measurement.Unit.Speed,
+		pressureUnit = namespace.measurement.Unit.Pressure,
 		DEFINITIONS = {
 		Speed: {
 			'mph': {
@@ -87,6 +93,46 @@ var mJsNamespace = mJsNamespace || window;
 					en_GB: 'Metres'
 				}
 			}
+		},
+		Pressure: {
+			'hPa': {
+				key: pressureUnit.HECTOPASCAL,
+				base: 'Pa',
+				factor: 100,
+				name: {
+					de: 'Hektopascal',
+					en: 'Hectopascal',
+					en_GB: 'Hectopascal'
+				},
+				plural: {
+					en: 'Hectopascals'
+				}
+			},
+			'Pa': {
+				key: pressureUnit.PASCAL,
+				base: null,
+				name: {
+					de: 'Pascal',
+					en: 'Pascal',
+					en_GB: 'Pascal'
+				},
+				plural: {
+					en: 'Pascals'
+				}
+			},
+			'bar': {
+				key: pressureUnit.BAR,
+				base: 'Pa',
+				factor: 1000000,
+				name: {
+					de: 'Bar',
+					en: 'Bar',
+					en_GB: 'Bar'
+				},
+				plural: {
+					en: 'Bars'
+				}
+			}
 		}
 	};
 
@@ -96,17 +142,19 @@ var mJsNamespace = mJsNamespace || window;
 			self = this;
 
 		this.convert = function(value) {
-			
+
 			if (DEFINITIONS[unitType]) {
 				var inputDef = DEFINITIONS[unitType][inputUnit],
-				outputDef = DEFINITIONS[unitType][outputUnit];
+					outputDef = DEFINITIONS[unitType][outputUnit];
 				if (inputDef && outputDef) {
-					
+
 					if (inputDef.base === outputUnit) {
 						return value * inputDef.factor;
-					} else if(inputDef.key === outputDef.base) {
+					} else if (inputDef.key === outputDef.base) {
 						return value / outputDef.factor;
 					} else {
+						// We're here b/c neither input nor out type is base type to which we could directly convert
+
 						/**
 						 * TODO use direct reconversion factors, while trading off the higher accuracy / performance
 						 * vs. larger configuration array/file size 
@@ -116,19 +164,17 @@ var mJsNamespace = mJsNamespace || window;
 							baseValue = MeasurementJs(unitType).convert(value).from(inputDef.key).to(inputDef.base);
 							inputUnit = inputDef.base;
 						} else if (baseType === outputDef.base) {
-							baseValue = MeasurementJs(unitType).convert(value).from(outputDef).to(outputDef.base);
+							baseValue = MeasurementJs(unitType).convert(value).from(outputDef.key).to(outputDef.base);
 							inputUnit = outputDef.base;
 						}
 						if (typeof baseType === 'undefined')
 							return false;
-						
+
 						return self.convert(baseValue);
 					}
 				}
-				console.log(value, inputDef, outputDef);
-				console.log('ToDo!');
 			}
-			
+
 			return false;
 		};
 
@@ -150,7 +196,7 @@ var mJsNamespace = mJsNamespace || window;
 	}
 
 	function MeasurementJs(UnitType) {
-
+		var self = this;
 		/**
 		 * 
 		 * @param {type} value
@@ -163,7 +209,6 @@ var mJsNamespace = mJsNamespace || window;
 			function readyToConvert() {
 				return converter.inputUnit !== null && converter.outputUnit !== null;
 			}
-			;
 
 			var easyApiConverter = {
 				from: function(inputUnit) {
@@ -184,7 +229,9 @@ var mJsNamespace = mJsNamespace || window;
 
 			return easyApiConverter;
 		};
-		return this;
+		return {
+			convert: self.convert
+		};
 	}
 
 })(mJsNamespace);
