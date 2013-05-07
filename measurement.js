@@ -1,10 +1,5 @@
 
 /**
- * @type {Object} The namespace you want MeasurementJs to be available under, `window` by default
- */
-var mJsNamespace = mJsNamespace || window;
-
-/**
  * Measurement.Js
  * 
  * Unit-of-Measure conversion made easy.
@@ -17,13 +12,9 @@ var mJsNamespace = mJsNamespace || window;
  * @returns {undefined}
  */
 (function(namespace) {
+	window.measurement = MeasurementJs;
 
-	namespace.measurement = MeasurementJs;
-	namespace.measurement.Converter = MeasurementConverter;
-
-	namespace.mJs = namespace.MeasurementJs;
-
-	namespace.measurement.Unit = {
+	MeasurementJs.Unit = {
 		Speed: {
 			MILES_PER_HOUR: 'mph',
 			KILOMETRE_PER_HOUR: 'km/h',
@@ -42,9 +33,9 @@ var mJsNamespace = mJsNamespace || window;
 			BAR: 'bar'
 		}
 	};
-
-	var speedUnit = namespace.measurement.Unit.Speed,
-		pressureUnit = namespace.measurement.Unit.Pressure,
+	
+	var speedUnit = MeasurementJs.Unit.Speed,
+		pressureUnit = MeasurementJs.Unit.Pressure,
 		DEFINITIONS = {
 		Speed: {
 			'mph': {
@@ -234,4 +225,12 @@ var mJsNamespace = mJsNamespace || window;
 		};
 	}
 
-})(mJsNamespace);
+	if (typeof namespace !== 'undefined') {
+		window.MeasurementJs = undefined;
+		namespace.measurement = MeasurementJs;
+		namespace.mJs = namespace.MeasurementJs;
+		namespace.measurement.Converter = MeasurementConverter;
+	}
+
+})(typeof mJsNamespace !== 'undefined' ? mJsNamespace : undefined);
+
