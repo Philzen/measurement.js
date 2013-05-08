@@ -149,15 +149,16 @@
 				key: MeasurementJs.Unit.Temperature.KELVIN,
 				base: MeasurementJs.Unit.Temperature.CELSIUS,
 				factor: function(value, reverse) {
-					if (reverse)
-						return value + 273.15;
-					
 					/**
 					 * Really strange rounding error:
 					 * (100 - 273.15) gives -173.14999999999998 (tested in Chrome 26.0.1410.63)
 					 * 
-					 * Luckily the workaround is simple:
+					 * Following workarounds:
 					 */
+					if (reverse) {
+						return parseFloat((value + 273 + .15).toFixed(10));
+					}
+					
 					return (value - 273) - .15;
 				}
 			}
@@ -207,7 +208,7 @@
 							inputUnit = outputDef.base;
 						}
 						
-						if (baseType === 'c')
+						if (baseType === MeasurementJs.Unit.Temperature.CELSIUS)
 							return parseFloat(self.convert(baseValue).toFixed(10));
 						
 						return self.convert(baseValue);

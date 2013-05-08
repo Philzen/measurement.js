@@ -41,6 +41,18 @@ describe("measurement.Unit.Temperature", function() {
 			expect(tc(-22).from(tu.FAHRENHEIT).to(tu.CELSIUS) ).toBe(-30);
 		});
 		
+		it('-200° Celsius => 73.15 Kelvin',function(){
+			var value = tc(-200).from(tu.CELSIUS).to(tu.KELVIN);
+			expect(value ).toBeDefined();
+			expect(value ).toBe(73.15);
+		});
+		
+		it('-273.15° Celsius => 0 Kelvin',function(){
+			var value = tc(-273.15).from(tu.CELSIUS).to(tu.KELVIN);
+			expect(value ).toBeDefined();
+			expect(value ).toBe(0);
+		});
+		
 		it('100 Kelvin => -173.15° Celsius',function(){
 			var value = tc(100).from(tu.KELVIN).to(tu.CELSIUS);
 			expect(value ).toBeDefined();
