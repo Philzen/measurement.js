@@ -12,7 +12,7 @@ describe("measurement.Unit.Distance", function() {
 		expect(typeof dc).toBe('object');
 	});
 
-	it('which constant string keys', function() {
+	it('which contains string keys that we can use as constants', function() {
 		for (var i in dc) {
 			expect(typeof dc[i]).toBe('string');
 			expect(dc[i].length).toBeGreaterThan(0);

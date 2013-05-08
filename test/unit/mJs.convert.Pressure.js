@@ -8,7 +8,7 @@ describe("measurement.Unit.Pressure", function() {
 		expect(typeof pc).toBe('object');
 	});
 
-	it('which constant string keys', function() {
+	it('which contains string keys that we can use as constants', function() {
 		for (var i in pc) {
 			expect(typeof pc[i]).toBe('string');
 			expect(pc[i].length).toBeGreaterThan(0);

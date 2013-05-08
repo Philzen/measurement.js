@@ -12,14 +12,14 @@ describe("measurement.Unit.Temperature", function() {
 		expect(typeof tu).toBe('object');
 	});
 
-	it('which string keys that we can use as constants', function() {
+	it('which contains string keys that we can use as constants', function() {
 		for (var i in tu) {
 			expect(typeof tu[i]).toBe('string');
 			expect(tu[i].length).toBeGreaterThan(0);
 		}
 	});
 	
-	describe("tc...", function() {
+	describe("measurement('Temperature').convert...", function() {
 		var tc = measurement('Temperature').convert;
 		it('20° Celsius => 68° Fahrenheit', function(){
 			expect(tc(20).from(tu.CELSIUS).to(tu.FAHRENHEIT) ).toBeDefined();

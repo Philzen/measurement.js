@@ -7,7 +7,7 @@ describe("measurement.Unit.Speed", function() {
 		expect(typeof speedUnit).toBe('object');
 	});
 
-	it('with constant string keys', function() {
+	it('which contains string keys that we can use as constants', function() {
 		for (var i in speedUnit) {
 			expect(typeof speedUnit[i]).toBe('string');
 			expect(speedUnit[i].length).toBeGreaterThan(0);
