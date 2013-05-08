@@ -153,13 +153,11 @@
 						return value + 273.15;
 					
 					/**
-					 * Really strange rounding error in chrome:
-					 * 100 - 273.15 gives -173.14999999999998 in Chrome 
-					 * (basically any calulcation crossing zero border)
+					 * Really strange rounding error:
+					 * (100 - 273.15) gives -173.14999999999998 (tested in Chrome 26.0.1410.63)
 					 * 
 					 * Luckily the workaround is simple:
 					 */
-					
 					return (value - 273) - .15;
 				}
 			}
