@@ -31,9 +31,14 @@
 			HECTOPASCAL: 'hPa',
 			PASCAL: 'Pa',
 			BAR: 'bar'
+		},
+		Temperature: {
+			CELSIUS: 'c',
+			FAHRENHEIT: 'f',
+			KELVIN: 'k'
 		}
 	};
-	
+
 	var speedUnit = MeasurementJs.Unit.Speed,
 		pressureUnit = MeasurementJs.Unit.Pressure,
 		DEFINITIONS = {
@@ -124,6 +129,40 @@
 					en: 'Bars'
 				}
 			}
+		},
+		Temperature: {
+			'c': {
+				key: MeasurementJs.Unit.Temperature.CELSIUS,
+				base: null,
+			},
+			'f': {
+				key: MeasurementJs.Unit.Temperature.FAHRENHEIT,
+				base: MeasurementJs.Unit.Temperature.CELSIUS,
+				factor: function(value, reverse) {
+					if (reverse)
+						return value * 1.8 + 32;
+
+					return (value - 32) * 5 / 9;
+				}
+			},
+			'k': {
+				key: MeasurementJs.Unit.Temperature.KELVIN,
+				base: MeasurementJs.Unit.Temperature.CELSIUS,
+				factor: function(value, reverse) {
+					if (reverse)
+						return value + 273.15;
+					
+					/**
+					 * Really strange rounding error in chrome:
+					 * 100 - 273.15 gives -173.14999999999998 in Chrome 
+					 * (basically any calulcation crossing zero border)
+					 * 
+					 * Luckily the workaround is simple:
+					 */
+					
+					return (value - 273) - .15;
+				}
+			}
 		}
 	};
 
@@ -137,12 +176,20 @@
 			if (DEFINITIONS[unitType]) {
 				var inputDef = DEFINITIONS[unitType][inputUnit],
 					outputDef = DEFINITIONS[unitType][outputUnit];
+				
 				if (inputDef && outputDef) {
 
 					if (inputDef.base === outputUnit) {
+						if (typeof inputDef.factor === 'function')
+							return inputDef.factor(value);
+
 						return value * inputDef.factor;
 					} else if (inputDef.key === outputDef.base) {
+						if (typeof outputDef.factor === 'function')
+							return outputDef.factor(value, true);
+
 						return value / outputDef.factor;
+
 					} else {
 						// We're here b/c neither input nor out type is base type to which we could directly convert
 
@@ -151,6 +198,9 @@
 						 * vs. larger configuration array/file size 
 						 */
 						var baseType = inputDef.base || outputDef.base, baseValue;
+						if (typeof baseType === 'undefined')
+							return false;
+						
 						if (baseType === inputDef.base) {
 							baseValue = MeasurementJs(unitType).convert(value).from(inputDef.key).to(inputDef.base);
 							inputUnit = inputDef.base;
@@ -158,9 +208,10 @@
 							baseValue = MeasurementJs(unitType).convert(value).from(outputDef.key).to(outputDef.base);
 							inputUnit = outputDef.base;
 						}
-						if (typeof baseType === 'undefined')
-							return false;
-
+						
+						if (baseType === 'c')
+							return parseFloat(self.convert(baseValue).toFixed(10));
+						
 						return self.convert(baseValue);
 					}
 				}
