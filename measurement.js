@@ -22,6 +22,8 @@
 			KNOT: 'kn'
 		},
 		Distance: {
+			MILLIMETRES: 'mm',
+			INCH: 'in',
 			KILOMETRES: 'km',
 			MILES: 'M',
 			METRES: 'm',
@@ -65,6 +67,7 @@
 		},
 		Distance: {
 			'km': {
+				key: MeasurementJs.Unit.Distance.KILOMETRES,
 				base: 'm',
 				factor: 1000,
 				name: {
@@ -78,6 +81,7 @@
 				}
 			},
 			'm': {
+				key: MeasurementJs.Unit.Distance.METRES,
 				base: null, // equals factor of 1
 				name: {
 					de: 'Meter',
@@ -88,6 +92,16 @@
 					en: 'Meters',
 					en_GB: 'Metres'
 				}
+			},
+			'mm': {
+				key: MeasurementJs.Unit.Distance.MILLIMETRES,
+				base: 'm',
+				factor: 0.001,
+			},
+			'in': {
+				key: MeasurementJs.Unit.Distance.INCH,
+				base: 'm',
+				factor: 0.0254,
 			}
 		},
 		Pressure: {
