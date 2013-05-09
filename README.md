@@ -1,10 +1,11 @@
-# MeasurementJs [![Build Status](https://travis-ci.org/Philzen/measurement.js.png?branch=master)](https://travis-ci.org/Philzen/measurement.js) 
+# [![Build Status](https://travis-ci.org/Philzen/measurement.js.png?branch=master)](https://travis-ci.org/Philzen/measurement.js)       MeasurementJs 
+
 
 Nice unit of measure conversion, featuring:
-- _Simplicity_: an easy to-use, Behaviour driven API 
-- _Sophistication_: full test coverage from project day one
-- _Quality_: aiming at high performance whilst maintaining a fair trade-off between accuracy 
-- _Adaptability_: Easy to extend for new measurement types (incl. i18n tables)
+- __Simplicity__: an easy to-use, Behaviour driven API 
+- __Sophistication__: full test coverage from project day one
+- __Quality__: aiming at high performance whilst maintaining a fair trade-off between accuracy 
+- __Adaptability__: Easy to extend for new measurement types (incl. i18n tables)
 
 
 ``` js
