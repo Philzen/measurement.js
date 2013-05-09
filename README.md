@@ -1,12 +1,24 @@
-[![Build Status](https://travis-ci.org/Philzen/measurement.js.png?branch=master)](https://travis-ci.org/Philzen/measurement.js)
+# MeasurementJs [![Build Status](https://travis-ci.org/Philzen/measurement.js.png?branch=master)](https://travis-ci.org/Philzen/measurement.js) 
 
-MeasurementJs   
-=============
-Nice measurement conversion.
+Nice unit of measure conversion, featuring:
+- _Simplicity_: an easy to-use, Behaviour driven API 
+- _Sophistication_: full test coverage from project day one
+- _Quality_: aiming at high performance whilst maintaining a fair trade-off between accuracy 
+- _Adaptability_: Easy to extend for new measurement types (incl. i18n tables)
+
 
 ``` js
-measurement('Distance').convert(1).from(Distance.KILOMETRES).to(Distance.METRES);               // returns 1000
-measurement('Speed').convert(10).from(Speed.KILOMETRE_PER_HOUR).to(Speed.METRES_PER_SECOND);    // returns 36
+measurement('Temperature').convert(20)
+    .from(measurement.Unit.Temperature.CELSIUS)
+    .to(measurement.Unit.Temperature.FAHRENHEIT);        // returns 68
+
+measurement('Distance').convert(1)
+    .from(measurement.Unit.Distance.KILOMETRE)
+    .to(measurement.Unit.Distance.METRE);                // returns 1000
+    
+measurement('Speed').convert(10)
+    .from(measurement.Unit.Speed.KILOMETRE_PER_HOUR)
+    .to(measurement.Unit.Speed.METRES_PER_SECOND);       // returns 36
 ```
 
 ### Test-Driven Development
