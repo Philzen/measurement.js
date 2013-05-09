@@ -21,16 +21,16 @@ describe("measurement.Unit.Distance", function() {
 	
 	describe("convert():", function() {
 		
-		it('1 Distance.KILOMETRES equals 1000 Distance.METRES', function(){
-			expect(measurement('Distance').convert(1).from(dc.KILOMETRES).to(dc.METRES) ).toBe(1000);
+		it('1 Distance.KILOMETRE equals 1000 Distance.METRE', function(){
+			expect(measurement('Distance').convert(1).from(dc.KILOMETRE).to(dc.METRE) ).toBe(1000);
 		});
 
 		it('1000 Distance.MILLIMETRES equal 1 Distance.METRES', function(){
-			expect(measurement('Distance').convert(1000).from(dc.MILLIMETRES).to(dc.METRES) ).toBe(1);
+			expect(measurement('Distance').convert(1000).from(dc.MILLIMETRE).to(dc.METRE) ).toBe(1);
 		});
 		
 		it('254 Distance.MILLIMETRES equal 10 Distance.INCH', function(){
-			expect(measurement('Distance').convert(254).from(dc.MILLIMETRES).to(dc.INCH) ).toBe(10);
+			expect(measurement('Distance').convert(254).from(dc.MILLIMETRE).to(dc.INCH) ).toBe(10);
 		});
 		
 	});

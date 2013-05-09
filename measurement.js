@@ -22,11 +22,11 @@
 			KNOT: 'kn'
 		},
 		Distance: {
-			MILLIMETRES: 'mm',
+			MILLIMETRE: 'mm',
 			INCH: 'in',
-			KILOMETRES: 'km',
-			MILES: 'M',
-			METRES: 'm',
+			KILOMETRE: 'km',
+			MILE: 'M',
+			METRE: 'm',
 			YARDS: 'y'
 		},
 		Pressure: {
@@ -72,7 +72,7 @@
 		},
 		Distance: {
 			'km': {
-				key: MeasurementJs.Unit.Distance.KILOMETRES,
+				key: MeasurementJs.Unit.Distance.KILOMETRE,
 				base: 'm',
 				factor: 1000,
 				name: {
@@ -86,7 +86,7 @@
 				}
 			},
 			'm': {
-				key: MeasurementJs.Unit.Distance.METRES,
+				key: MeasurementJs.Unit.Distance.METRE,
 				base: null, // equals factor of 1
 				name: {
 					de: 'Meter',
@@ -99,7 +99,7 @@
 				}
 			},
 			'mm': {
-				key: MeasurementJs.Unit.Distance.MILLIMETRES,
+				key: MeasurementJs.Unit.Distance.MILLIMETRE,
 				base: 'm',
 				factor: 0.001,
 			},
