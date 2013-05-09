@@ -38,6 +38,11 @@
 			CELSIUS: 'c',
 			FAHRENHEIT: 'f',
 			KELVIN: 'k'
+		},
+		Duration: {
+			HOUR: 'h',
+			MINUTE: 'm',
+			SECOND: 's'
 		}
 	};
 
@@ -175,6 +180,23 @@
 					
 					return (value - 273) - .15;
 				}
+			}
+		},
+		Duration: {
+			'h': {
+				key: MeasurementJs.Unit.Duration.HOUR,
+				base: 's',
+				factor: 3600
+			},
+			'm': {
+				key: MeasurementJs.Unit.Duration.MINUTE,			
+				base: 's',
+				factor: 60
+			},
+			's': {
+				key: MeasurementJs.Unit.Duration.SECOND,
+				base: null,
+				factor: 1
 			}
 		}
 	};
