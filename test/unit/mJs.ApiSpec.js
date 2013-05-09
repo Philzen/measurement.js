@@ -11,9 +11,11 @@ describe("MeasurementJs API: ", function() {
 	});
 
 	describe("measurement().convert(someValue)", function() {
-		var testUnitType = measurement.Unit.Distance,
-			convertFunction = measurement(testUnitType).convert(1),
-			convertFunction2 = measurement(testUnitType).convert(2),
+		var testUnitType = 'Distance',
+			testValue = 42,
+			testValue2 = 666,
+			convertFunction = measurement(testUnitType).convert(testValue),
+			convertFunction2 = measurement(testUnitType).convert(testValue2),
 			someUnit = 'km',
 			someOtherUnit = 'm';
 
@@ -38,15 +40,24 @@ describe("MeasurementJs API: ", function() {
 				expect(fromSomeUnitReturn).toBe(convertFunction);
 			});
 
-			it("returns a value when to(someOtherUnit) is called on the returned object", function() {
-				expect(fromSomeUnitReturn.to(someOtherUnit)).toBeDefined();
+			it("returns a numeric value when to(someOtherUnit) is called on the returned object", function() {
+				// TODO find out why we need to do this again in this scope - BDD doesn't seem scrope safe here
+				var fromSomeUnitReturn = convertFunction.from(someUnit);
+				
+				var returnedOnSecondChainedCall = fromSomeUnitReturn.to(someOtherUnit);
+				expect(typeof returnedOnSecondChainedCall).toBe('number');
 			});
+			
+			it("returns *the same* value when to(someUnit) - the same unit - is called on the returned object", function() {
+				expect(measurement(testUnitType).convert(testValue).from(someUnit).to(someUnit)).toBe(testValue);
+			});
+			
 		});
 		
 		
 		describe("to()", function() {
 			it("returns the same object on first chained call", function() {
-				expect(convertFunction.to()).toBe(convertFunction);
+				expect(convertFunction2.to()).toBe(convertFunction2);
 			});
 		});
 		
