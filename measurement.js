@@ -101,12 +101,12 @@
 			'mm': {
 				key: MeasurementJs.Unit.Distance.MILLIMETRE,
 				base: 'm',
-				factor: 0.001,
+				factor: 0.001
 			},
 			'in': {
 				key: MeasurementJs.Unit.Distance.INCH,
 				base: 'm',
-				factor: 0.0254,
+				factor: 0.0254
 			}
 		},
 		Pressure: {
@@ -152,7 +152,7 @@
 		Temperature: {
 			'c': {
 				key: MeasurementJs.Unit.Temperature.CELSIUS,
-				base: null,
+				base: null
 			},
 			'f': {
 				key: MeasurementJs.Unit.Temperature.FAHRENHEIT,
