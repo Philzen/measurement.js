@@ -12,6 +12,7 @@
  * @returns {undefined}
  */
 (function(namespace) {
+	"use strict";
 	window.measurement = MeasurementJs;
 
 	MeasurementJs.Unit = {
