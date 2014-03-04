@@ -280,7 +280,7 @@
 		 * @param {type} value
 		 * @returns {MeasurementConverter}
 		 */
-		this.convert = function(value) {
+		var convert = function(value) {
 			var valueToConvert = value,
 				converter = new MeasurementConverter(UnitType);
 
@@ -308,7 +308,7 @@
 			return easyApiConverter;
 		};
 		return {
-			convert: self.convert
+			convert: convert
 		};
 	}
 
