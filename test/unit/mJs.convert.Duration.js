@@ -15,7 +15,7 @@ describe("measurement.Unit.Duration", function() {
 	});
 
 	var convertDuration = measurement('Duration').convert;
-	describe("measurement('Duration).convert...", function() {
+	describe("measurement('Duration').convert...", function() {
 		it("returns 1 for convert( 60 ).from( Duration.MINUTE ).to( Duration.HOUR )", function() {
 			expect(
 				convertDuration(60).from(durationUnit.MINUTE).to(durationUnit.HOUR)
