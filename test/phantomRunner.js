@@ -97,6 +97,7 @@ page.open(system.args[1], function(status) {
 						console.log(colors.reset + msg.innerText + colors.red);
 						console.log('');
 					}
+					console.log(colors.reset);
 					return 1;
 				} else {
 					var passedSuites = document.body.querySelector('.results > .summary'),
