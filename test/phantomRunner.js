@@ -130,6 +130,7 @@ page.open(system.args[1], function(status) {
 					console.log(recursiveSpecOutput(passedSuites));
 					console.log(colors.reset + colors.green);
 					console.log(document.body.querySelector('.alert > .passingAlert.bar').innerText);
+					console.log(colors.reset);
 					return 0;
 				}
 			});
