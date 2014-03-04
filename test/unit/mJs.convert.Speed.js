@@ -1,3 +1,4 @@
+"use strict";
 
 describe("measurement.Unit.Speed", function() {
 	expect(measurement.Unit.Speed).toBeDefined();

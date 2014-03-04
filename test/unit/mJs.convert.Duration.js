@@ -1,3 +1,4 @@
+"use strict";
 
 describe("measurement.Unit.Duration", function() {
 	expect(measurement.Unit.Duration).toBeDefined();
