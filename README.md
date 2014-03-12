@@ -1,4 +1,4 @@
-# [![Build Status](https://travis-ci.org/Philzen/measurement.js.png?branch=master)](https://travis-ci.org/Philzen/measurement.js)       MeasurementJs 
+# [![Build Status](https://travis-ci.org/Philzen/measurement.js.png?branch=master)](https://travis-ci.org/Philzen/measurement.js)       [![Code Climate](https://codeclimate.com/github/Philzen/measurement.js.png)](https://codeclimate.com/github/Philzen/measurement.js)    MeasurementJs 
 
 
 Nice unit of measure conversion, featuring:
