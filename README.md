@@ -30,10 +30,10 @@ The test suite can be executed straightaway and easily, for example:
  - In the Browser:
 Simply open test/index.html in the browser environment you want to test
 
- - CLI-based (using npm)
+ - CLI-based (using npm)  
 `npm test`
 
- - CLI-based (w/o npm, you will need to ensure  phantomjs is available yourself)
+ - CLI-based (w/o npm, you will need to ensure  phantomjs is available yourself)  
 `phantomjs test/phantomRunner.js test/index.html`
 
 ### Project status
