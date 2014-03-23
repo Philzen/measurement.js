@@ -1,0 +1,15 @@
+{
+  "name": "measurementjs",
+  "version": "0.1.0",
+  "description": "Nice unit-of-measure conversion",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Philzen/measurement.js"
+   },
+  "license": "MIT",
+  "author": "Philzen <phil AT patient-radio.de>",
+  "scripts": {
+    "test": "phantomjs test/phantomRunner.js test/index.html"
+  }
+}

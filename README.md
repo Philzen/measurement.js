@@ -24,9 +24,17 @@ measurement('Speed').convert(10)
 
 ### Test-Driven Development
 
-The API definition and all conversion operations are covered by jasmine tests.
-To run them, just open test/index.html in a browser.  
-Alternatively, the test suite may be run on the console through phantomjs: `phantomjs test/phantomRunner.js test/index.html`
+The API definition and all conversion operations are covered by jasmine tests. 
+The test suite can be executed straightaway and easily, for example:
+
+ - In the Browser:
+Simply open test/index.html in the browser environment you want to test
+
+ - CLI-based (using npm)
+`npm test`
+
+ - CLI-based (w/o npm, you will need to ensure  phantomjs is available yourself)
+`phantomjs test/phantomRunner.js test/index.html`
 
 ### Project status
 
