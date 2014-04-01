@@ -51,6 +51,15 @@ Clone from [Github](https://github.com/Philzen/measurement.js/) or install via N
 
   ![NPM](https://nodei.co/npm/measurementjs.png?downloads=true&stars=true)
 
+### Currently tested platforms
+
+Please feel free to add your own test results.
+
+    PhantomJS 1.9.7 (Linux): Executed 46 of 46 SUCCESS (0.027 secs / 0.022 secs)
+    Chrome 18.0.1025 (Linux): Executed 46 of 46 SUCCESS (0.06 secs / 0.035 secs)
+    Firefox 28.0.0 (Ubuntu): Executed 46 of 46 SUCCESS (0.037 secs / 0.026 secs)
+
+
 ### Inspiring projects
 
 - http://www.codeproject.com/Articles/23087/Measurement-Unit-Conversion-Library (a C# / XML based approach)
