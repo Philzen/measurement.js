@@ -1,6 +1,6 @@
 {
   "name": "measurementjs",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Nice unit-of-measure conversion",
   "readmeFilename": "README.md",
   "main": "measurement.js",
@@ -14,6 +14,11 @@
     "test": "phantomjs test/phantomRunner.js test/index.html"
   },
   "devDependencies": {
+    "karma": "^0.12.2",
+    "karma-cli": "0.0.4",
+    "karma-coverage": "^0.2.1",
+    "karma-jasmine": "^0.1.5",
+    "karma-phantomjs-launcher": "^0.1.2",
     "phantomjs": "^1.9.7-1"
   }
 }

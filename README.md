@@ -1,6 +1,8 @@
 #     MeasurementJs
 
-[![Build Status](https://travis-ci.org/Philzen/measurement.js.svg?branch=master)](https://travis-ci.org/Philzen/measurement.js) [![devDependency Status](https://david-dm.org/philzen/measurement.js/dev-status.svg?theme=shields.io)](https://david-dm.org/philzen/measurement.js#info=devDependencies) [![Code Climate](https://codeclimate.com/github/Philzen/measurement.js.png)](https://codeclimate.com/github/Philzen/measurement.js)
+[![Build Status](https://travis-ci.org/Philzen/measurement.js.svg?branch=master)](https://travis-ci.org/Philzen/measurement.js)
+[![NPM devDependencies Status](https://david-dm.org/philzen/measurement.js/dev-status.svg?theme=shields.io)](https://david-dm.org/philzen/measurement.js#info=devDependencies)
+[![Code Climate](https://codeclimate.com/github/Philzen/measurement.js.png)](https://codeclimate.com/github/Philzen/measurement.js)
 
 Nice unit of measure conversion, featuring:
 - __Simplicity__: an easy to-use, Behaviour driven API 
@@ -29,13 +31,14 @@ measurement('Speed').convert(10)
 The API definition and all conversion operations are covered by jasmine tests. 
 The test suite can be executed straightaway and easily, for example:
 
- - In the Browser:
+
+ - In the Browser: **currently broken**
 Simply open test/index.html in the browser environment you want to test
 
  - CLI-based (using npm)  
-`npm test`
+`npm test` (which is just a shorthand for `node_modules/.bin/karma start`
 
- - CLI-based (w/o npm, you will need to ensure  phantomjs is available yourself)  
+ - CLI-based (w/o npm & karma, you will need to ensure phantomjs is available yourself)  **currently broken**
 `phantomjs test/phantomRunner.js test/index.html`
 
 ### Roadmap
