@@ -11,7 +11,7 @@
   "license": "MIT",
   "author": "Philzen <phil AT patient-radio.de>",
   "scripts": {
-    "test": "phantomjs test/phantomRunner.js test/index.html"
+    "test": "./node_modules/.bin/karma start"
   },
   "devDependencies": {
     "karma": "^0.12.2",
