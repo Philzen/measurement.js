@@ -1,5 +1,6 @@
-# [![Build Status](https://travis-ci.org/Philzen/measurement.js.png?branch=master)](https://travis-ci.org/Philzen/measurement.js)       [![Code Climate](https://codeclimate.com/github/Philzen/measurement.js.png)](https://codeclimate.com/github/Philzen/measurement.js)    MeasurementJs    [![devDependency Status](https://david-dm.org/philzen/measurement.js/dev-status.svg?theme=shields.io)](https://david-dm.org/philzen/measurement.js#info=devDependencies)
+#     MeasurementJs
 
+[![Build Status](https://travis-ci.org/Philzen/measurement.js.svg?branch=master)](https://travis-ci.org/Philzen/measurement.js) [![devDependency Status](https://david-dm.org/philzen/measurement.js/dev-status.svg?theme=shields.io)](https://david-dm.org/philzen/measurement.js#info=devDependencies) [![Code Climate](https://codeclimate.com/github/Philzen/measurement.js.png)](https://codeclimate.com/github/Philzen/measurement.js)
 
 Nice unit of measure conversion, featuring:
 - __Simplicity__: an easy to-use, Behaviour driven API 
