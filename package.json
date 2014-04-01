@@ -11,9 +11,11 @@
   "license": "MIT",
   "author": "Philzen <phil AT patient-radio.de>",
   "scripts": {
-    "test": "./node_modules/.bin/karma start"
+    "karma": "./node_modules/.bin/karma start",
+    "test": "npm run-script karma && cat ./coverage/*/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
   "devDependencies": {
+    "coveralls": "^2.10.0",
     "karma": "^0.12.2",
     "karma-cli": "0.0.4",
     "karma-coverage": "^0.2.1",
