@@ -1,4 +1,4 @@
-# [![Build Status](https://travis-ci.org/Philzen/measurement.js.png?branch=master)](https://travis-ci.org/Philzen/measurement.js)       [![Code Climate](https://codeclimate.com/github/Philzen/measurement.js.png)](https://codeclimate.com/github/Philzen/measurement.js)    MeasurementJs 
+# [![Build Status](https://travis-ci.org/Philzen/measurement.js.png?branch=master)](https://travis-ci.org/Philzen/measurement.js)       [![Code Climate](https://codeclimate.com/github/Philzen/measurement.js.png)](https://codeclimate.com/github/Philzen/measurement.js)    MeasurementJs  
 
 
 Nice unit of measure conversion, featuring:
@@ -22,6 +22,7 @@ measurement('Speed').convert(10)
     .to(measurement.Unit.Speed.METRES_PER_SECOND);       // returns 36
 ```
 
+
 ### Test-Driven Development
 
 The API definition and all conversion operations are covered by jasmine tests. 
@@ -36,9 +37,15 @@ Simply open test/index.html in the browser environment you want to test
  - CLI-based (w/o npm, you will need to ensure  phantomjs is available yourself)  
 `phantomjs test/phantomRunner.js test/index.html`
 
-### Project status
+### Roadmap
 
 For current and future state of affairs, have a peek at the [Roadmap](ROADMAP.md) in the root project folder.
+
+### Get it
+
+Clone from [Github](https://github.com/Philzen/measurement.js/) or install via NPM:
+
+  ![NPM](https://nodei.co/npm/measurementjs.png?downloads=true&stars=true)
 
 ### Inspiring projects
 
