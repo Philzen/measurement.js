@@ -11,9 +11,9 @@
  * @param {Object} namespace
  * @returns {undefined}
  */
-(function(namespace) {
+(function(win, namespace) {
 	"use strict";
-	window.measurement = MeasurementJs;
+	win.measurement = MeasurementJs;
 
 	MeasurementJs.Unit = {
 		Speed: {
@@ -313,11 +313,20 @@
 	}
 
 	if (typeof namespace !== 'undefined') {
-		window.MeasurementJs = undefined;
+		win.MeasurementJs = undefined;
 		namespace.measurement = MeasurementJs;
 		namespace.mJs = namespace.MeasurementJs;
 		namespace.measurement.Converter = MeasurementConverter;
 	}
 
-})(typeof mJsNamespace !== 'undefined' ? mJsNamespace : undefined);
+    // AMD definition - i.e. for require.js
+    if (typeof win.define === "function" && win.define.amd) {
+        define("measurement", [], function() {
+                "use strict";
+                return MeasurementJs;
+        });
+    } else if (win.module !== undefined && win.module.exports) {
+        win.module.exports.measurementjs = MeasurementJs;
+    }
 
+})(window, window.mJsNamespace);
