@@ -1,5 +1,6 @@
 'use strict';
 
+define([ 'measurement' ], function( measurement ) {
 describe("measurement.Unit.Pressure", function() {
 	expect(measurement.Unit.Pressure).toBeDefined();
 
@@ -30,4 +31,5 @@ describe("measurement.Unit.Pressure", function() {
 			expect(result).toBe(10000);
 		});
 	});
+});
 });
