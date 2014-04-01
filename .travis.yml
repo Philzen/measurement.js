@@ -1,1 +1,1 @@
-script: phantomjs test/phantomRunner.js test/index.html 
+script: npm test 
