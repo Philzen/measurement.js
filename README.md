@@ -47,9 +47,12 @@ For current and future state of affairs, have a peek at the [Roadmap](ROADMAP.md
 
 ### Get it
 
-Clone from [Github](https://github.com/Philzen/measurement.js/) or install via NPM:
+master:  Clone from [Github](https://github.com/Philzen/measurement.js/), then run `npm install` in the project root
+
+latest release - install via NPM:
 
   ![NPM](https://nodei.co/npm/measurementjs.png?downloads=true&stars=true)
+
 
 ### Currently tested platforms
 
