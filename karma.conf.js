@@ -33,7 +33,7 @@ module.exports = function(config) {
       // source files, that you wanna generate coverage for
       // do not include tests or libraries
       // (these files will be instrumented by Istanbul via Ibrik)
-      'measurement.js': ['coverage']
+      'measurement.js': ['jshint','coverage']
     },
 
     // test results reporter to use
@@ -61,6 +61,28 @@ module.exports = function(config) {
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
     singleRun: true,
+
+    jshint: {
+        options: {
+//            reporter: require('jshint-stylish'),
+            curly: true,
+            eqeqeq: true,
+            immed: true,
+            latedef: true,
+            newcap: true,
+            noarg: true,
+            sub: true,
+            undef: true,
+            boss: true,
+            devel: true,
+            eqnull: true,
+            browser: true,
+            globals: {
+                cordova: true,
+                jQuery: true
+            }
+        }
+    },
 
     coverageReporter: {
       dir : './coverage/',
