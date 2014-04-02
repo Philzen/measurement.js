@@ -1,11 +1,12 @@
 # Planned / Suggested developments
 
-v0.2 - better API
+v0.2 - augmented API
 ----
 
-- may remove `Unit` sub-namespace, setting up the unit classes right under measurement (`measurement.Speed` instead of `measurement.Unit.Speed`) --> API compatitibility break!
+- deprecate `Unit` sub-namespace, setting up the unit classes right under measurement (`measurement.Speed` instead of `measurement.Unit.Speed`) --> to be removed in v1.0 
 - Make Constants usable everywhere, so one may never have to use strings and maximise IDE code-completion gains 
-` measurement(measurement.Speed).convert(...)...`
+` mm(mm.Speed).convert(...)` (currently it still needs a string there)
+- either completely externalise DEFINITIONS array or make other unit definitions loadable in a simple way
 - dynamically generate a `toString()` method on unit classes, so `"My " + measurement.Speed` will evaluate to `My Speed` rather than `My [object Object]` 
     - this will also provoke type-sensitive programming in users
 - Evaluate marking a measurement as conforming to the metric system. Decision framework:
@@ -14,7 +15,7 @@ v0.2 - better API
     - MUST NOT have a negative impact on performance
 
 
-v0.3 - i18n 
+v0.3 - pluggable i18n 
 ----
 
 - Externalise localised names and descriptions currently stored in main script file 
@@ -29,8 +30,9 @@ v0.x - (future muzak)
 
 - Raise float precision (currently ~7 digits) when cross-converting between types of common-base type  
 - Implement more conversions, such as  
-    - weight
-    - volume  
+    - Weight
+    - Area (Distance^2)
+    - Volume  (Distance^3)
 - Make Unit Configs seperatable from measurement.js  
 
 
