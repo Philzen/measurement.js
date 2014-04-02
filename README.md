@@ -6,7 +6,7 @@
 
 Nice unit of measure conversion, featuring:
 - __Simplicity__: an easy to-use, Behaviour driven API 
-- __Sophistication__: full test coverage from project day one
+- __Sophistication__:  [![Coverage Status](https://coveralls.io/repos/Philzen/measurement.js/badge.png?branch=master)](https://coveralls.io/r/Philzen/measurement.js?branch=master) full test coverage from project day one
 - __Quality__: aiming at high performance whilst maintaining a fair trade-off between accuracy 
 - __Adaptability__: Easy to extend for new measurement types (incl. i18n tables)
 
