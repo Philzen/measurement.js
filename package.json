@@ -12,7 +12,8 @@
   "author": "Philzen <phil AT patient-radio.de>",
   "scripts": {
     "karma": "./node_modules/.bin/karma start",
-    "test": "npm run-script karma && cat ./coverage/*/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
+    "test": "echo $TRAVIS$CI | grep truetrue>/dev/null && npm run-script travis-publish || npm run-script karma",
+    "travis-publish": "npm run-script karma && cat ./coverage/*/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
   "devDependencies": {
     "coveralls": "^2.10.0",
