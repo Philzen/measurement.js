@@ -36,7 +36,9 @@ The test suite can be executed straightaway and easily, for example:
 Simply open test/index.html in the browser environment you want to test
 
  - CLI-based (using npm)  
-`npm test` (which is just a shorthand for `node_modules/.bin/karma start`
+`npm run-script karma`
+That command just a shorthand for `node_modules/.bin/karma start`. If you have
+`karma-cli` already available on your system, you can also just do `karma start`
 
  - CLI-based (w/o npm & karma, you will need to ensure phantomjs is available yourself)  **currently broken**
 `phantomjs test/phantomRunner.js test/index.html`
