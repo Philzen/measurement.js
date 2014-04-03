@@ -1,58 +1,15 @@
-<!--
-To change this template, choose Tools | Templates
-and open the template in the editor.
--->
 <!DOCTYPE html>
 <html>
-	<head>
-		<title></title>
-		<link href="lib/jasmine/jasmine.css" rel="stylesheet" />
-		<script src="lib/jasmine/jasmine.js" ></script>
-		<script src="lib/jasmine/jasmine-html.js" ></script>
-		<script src="../measurement.js" ></script>
-		<script src="unit/mJs.ApiSpec.js" ></script>
-		<script src="unit/mJs.convert.Speed.js" ></script>
-		<script src="unit/mJs.convert.Distance.js" ></script>
-		<script src="unit/mJs.convert.Pressure.js" ></script>
-		<script src="unit/mJs.convert.Temperature.js" ></script>
-		<script src="unit/mJs.convert.Duration.js" ></script>
-		
-		<script>
-			var OurCoolCustomNamespace = { changeIT: {}};
-			mJsNamespace = OurCoolCustomNamespace.changeIT;
-		</script>
-		<script src="../measurement.js" ></script>
-		<script src="unit/mJs.CustomNamespaceSpec.js" ></script>
-		<script type="text/javascript">
-			(function() {
-				var jasmineEnv = jasmine.getEnv();
-				jasmineEnv.updateInterval = 250;
-				var htmlReporter = new jasmine.HtmlReporter();
-				jasmineEnv.addReporter(htmlReporter);
-
-				jasmineEnv.specFilter = function(spec) {
-					return htmlReporter.specFilter(spec);
-				};
-
-				var currentWindowOnload = window.onload;
-				window.onload = function() {
-					if (currentWindowOnload) {
-						currentWindowOnload();
-					}
-
-					document.querySelector('.version').innerHTML = jasmineEnv.versionString();
-					execJasmine();
-				};
-
-				function execJasmine() {
-					jasmineEnv.execute();
-				}
-			})();
-		</script>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	</head>
-	<body>
-		<div class="version"></div>
-		<div id="HtmlRepoter" class="jasmine_reporter"></div>
-	</body>
+    <head>
+        <title></title>
+        <link href="lib/jasmine/jasmine.css" rel="stylesheet" />
+        <script data-main="./browserRunner.js" src="../node_modules/requirejs/require.js"></script>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <div class="version"></div>
+        <div id="HtmlReporter" class="jasmine_reporter"></div>
+        <script type="text/javascript">
+        </script>
+    </body>
 </html>
