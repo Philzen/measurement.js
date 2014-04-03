@@ -78,8 +78,8 @@ module.exports = function(config) {
             eqnull: true,
             browser: true,
             globals: {
-                cordova: true,
-                jQuery: true
+              cordova: true,
+              jQuery: true
             }
         }
     },
@@ -87,19 +87,10 @@ module.exports = function(config) {
     coverageReporter: {
       dir : './coverage/',
       reporters:[
-          {type: 'lcov'},
-          {type: 'text', file: 'coverage.txt'},
-          {type: 'text-summary', file: 'coverage-summary.txt'}
+        {type: 'lcov'},
+        {type: 'text', file: 'coverage.txt'},
+        {type: 'text-summary', file: 'coverage-summary.txt'}
       ]
-    },
-
-    coveralls: {
-        options: {
-            debug: false,
-            coverage_dir: './coverage/*',
-            dryRun: false,
-            force: true
-        }
     }
   });
 };
