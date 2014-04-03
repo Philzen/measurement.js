@@ -31,14 +31,15 @@ measurement('Speed').convert(10)
 The API definition and all conversion operations are covered by jasmine tests. 
 The test suite can be executed straightaway and easily, for example:
 
+- Test directly in the browser
+Simply open test/index.html in the browser
 
- - In the Browser: **currently broken**
-Simply open test/index.html in the browser environment you want to test
-
- - CLI-based (using npm)  
+ - With Karma test driver (CLI-based using npm)
 `npm run-script karma`
 That command just a shorthand for `node_modules/.bin/karma start`. If you have
-`karma-cli` already available on your system, you can also just do `karma start`
+`karma-cli` already installed globally, you can also just do `karma start`
+    1. now open any browser you like and open http://localhost:9876
+    2. observe the output on the test console
 
  - CLI-based (w/o npm & karma, you will need to ensure phantomjs is available yourself)  **currently broken**
 `phantomjs test/phantomRunner.js test/index.html`
