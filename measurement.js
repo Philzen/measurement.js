@@ -8,14 +8,13 @@
  * @version 0.1
  * @example text measurementJs.convert(3.5).from(DISTANCE.KMH).to(DISTANCE.M); or  measurementJs.convert(3.5).from(DISTANCE.KMH).to(DISTANCE.M);
  * 
- * @param {Object} namespace
+ * @param {Object} ns
  * @returns {undefined}
  */
-(function(win, namespace) {
+(function(win, ns) {
 	"use strict";
-	win.measurement = MeasurementJs;
 
-	MeasurementJs.Unit = {
+	var UNIT = {
 		Speed: {
 			MILES_PER_HOUR: 'mph',
 			KILOMETRE_PER_HOUR: 'km/h',
@@ -47,33 +46,31 @@
 		}
 	};
 
-	var speedUnit = MeasurementJs.Unit.Speed,
-		pressureUnit = MeasurementJs.Unit.Pressure,
-		DEFINITIONS = {
+	var DEFINITIONS = {
 		Speed: {
 			'mph': {
-				key: speedUnit.MILES_PER_HOUR,
-				base: speedUnit.KILOMETRE_PER_HOUR,
+				key: UNIT.Speed.MILES_PER_HOUR,
+				base: UNIT.Speed.KILOMETRE_PER_HOUR,
 				factor: 1.609344
 			},
 			'km/h': {
-				key: speedUnit.KILOMETRE_PER_HOUR,
+				key: UNIT.Speed.KILOMETRE_PER_HOUR,
 				base: null
 			},
 			'm/s': {
-				key: speedUnit.METRE_PER_SECOND,
-				base: speedUnit.KILOMETRE_PER_HOUR,
+				key: UNIT.Speed.METRE_PER_SECOND,
+				base: UNIT.Speed.KILOMETRE_PER_HOUR,
 				factor: 3.6
 			},
 			'kn': {
-				key: speedUnit.KNOT,
-				base: speedUnit.KILOMETRE_PER_HOUR,
+				key: UNIT.Speed.KNOT,
+				base: UNIT.Speed.KILOMETRE_PER_HOUR,
 				factor: 1.852
 			}
 		},
 		Distance: {
 			'km': {
-				key: MeasurementJs.Unit.Distance.KILOMETRE,
+				key: UNIT.Distance.KILOMETRE,
 				base: 'm',
 				factor: 1000,
 				name: {
@@ -87,7 +84,7 @@
 				}
 			},
 			'm': {
-				key: MeasurementJs.Unit.Distance.METRE,
+				key: UNIT.Distance.METRE,
 				base: null, // equals factor of 1
 				name: {
 					de: 'Meter',
@@ -100,19 +97,19 @@
 				}
 			},
 			'mm': {
-				key: MeasurementJs.Unit.Distance.MILLIMETRE,
+				key: UNIT.Distance.MILLIMETRE,
 				base: 'm',
 				factor: 0.001
 			},
 			'in': {
-				key: MeasurementJs.Unit.Distance.INCH,
+				key: UNIT.Distance.INCH,
 				base: 'm',
 				factor: 0.0254
 			}
 		},
 		Pressure: {
 			'hPa': {
-				key: pressureUnit.HECTOPASCAL,
+				key: UNIT.Pressure.HECTOPASCAL,
 				base: 'Pa',
 				factor: 100,
 				name: {
@@ -125,7 +122,7 @@
 				}
 			},
 			'Pa': {
-				key: pressureUnit.PASCAL,
+				key: UNIT.Pressure.PASCAL,
 				base: null,
 				name: {
 					de: 'Pascal',
@@ -137,7 +134,7 @@
 				}
 			},
 			'bar': {
-				key: pressureUnit.BAR,
+				key: UNIT.Pressure.BAR,
 				base: 'Pa',
 				factor: 1000000,
 				name: {
@@ -152,22 +149,23 @@
 		},
 		Temperature: {
 			'c': {
-				key: MeasurementJs.Unit.Temperature.CELSIUS,
+				key: UNIT.Temperature.CELSIUS,
 				base: null
 			},
 			'f': {
-				key: MeasurementJs.Unit.Temperature.FAHRENHEIT,
-				base: MeasurementJs.Unit.Temperature.CELSIUS,
+				key: UNIT.Temperature.FAHRENHEIT,
+				base: UNIT.Temperature.CELSIUS,
 				factor: function(value, reverse) {
-					if (reverse)
+					if (reverse) {
 						return value * 1.8 + 32;
+                    }
 
 					return (value - 32) * 5 / 9;
 				}
 			},
 			'k': {
-				key: MeasurementJs.Unit.Temperature.KELVIN,
-				base: MeasurementJs.Unit.Temperature.CELSIUS,
+				key: UNIT.Temperature.KELVIN,
+				base: UNIT.Temperature.CELSIUS,
 				factor: function(value, reverse) {
 					/**
 					 * Really strange rounding error:
@@ -185,17 +183,17 @@
 		},
 		Duration: {
 			'h': {
-				key: MeasurementJs.Unit.Duration.HOUR,
+				key: UNIT.Duration.HOUR,
 				base: 's',
 				factor: 3600
 			},
 			'm': {
-				key: MeasurementJs.Unit.Duration.MINUTE,			
+				key: UNIT.Duration.MINUTE,
 				base: 's',
 				factor: 60
 			},
 			's': {
-				key: MeasurementJs.Unit.Duration.SECOND,
+				key: UNIT.Duration.SECOND,
 				base: null,
 				factor: 1
 			}
@@ -216,13 +214,15 @@
 				if (inputDef && outputDef) {
 
 					if (inputDef.base === outputUnit) {
-						if (typeof inputDef.factor === 'function')
+						if (typeof inputDef.factor === 'function') {
 							return inputDef.factor(value);
+                        }
 
 						return value * inputDef.factor;
 					} else if (inputDef.key === outputDef.base) {
-						if (typeof outputDef.factor === 'function')
+						if (typeof outputDef.factor === 'function') {
 							return outputDef.factor(value, true);
+                        }
 
 						return value / outputDef.factor;
 
@@ -234,19 +234,21 @@
 						 * vs. larger configuration array/file size 
 						 */
 						var baseType = inputDef.base || outputDef.base, baseValue;
-						if (typeof baseType === 'undefined')
+						if (typeof baseType === 'undefined') {
 							return false;
+                        }
 						
 						if (baseType === inputDef.base) {
-							baseValue = MeasurementJs(unitType).convert(value).from(inputDef.key).to(inputDef.base);
+							baseValue = mJs(unitType).convert(value).from(inputDef.key).to(inputDef.base);
 							inputUnit = inputDef.base;
 						} else if (baseType === outputDef.base) {
-							baseValue = MeasurementJs(unitType).convert(value).from(outputDef.key).to(outputDef.base);
+							baseValue = mJs(unitType).convert(value).from(outputDef.key).to(outputDef.base);
 							inputUnit = outputDef.base;
 						}
 						
-						if (baseType === MeasurementJs.Unit.Temperature.CELSIUS)
+						if (baseType === UNIT.Temperature.CELSIUS) {
 							return parseFloat(self.convert(baseValue).toFixed(10));
+                        }
 						
 						return self.convert(baseValue);
 					}
@@ -273,7 +275,7 @@
 		};
 	}
 
-	function MeasurementJs(UnitType) {
+	var mJs = function MeasurementJs(UnitType) {
 		var self = this;
 		/**
 		 * 
@@ -291,15 +293,17 @@
 			var easyApiConverter = {
 				from: function(inputUnit) {
 					converter.setInputUnit(inputUnit);
-					if (readyToConvert())
+					if (readyToConvert()) {
 						return converter.convert(valueToConvert);
+                    }
 
 					return this;
 				},
 				to: function(outputUnit) {
 					converter.setOutputUnit(outputUnit);
-					if (readyToConvert())
+					if (readyToConvert()) {
 						return converter.convert(valueToConvert);
+                    }
 
 					return this;
 				}
@@ -307,22 +311,26 @@
 
 			return easyApiConverter;
 		};
+
 		return {
 			convert: convert
 		};
 	}
+    
+    mJs.Unit = UNIT;
 
-	if (typeof namespace !== 'undefined') {
-		win.MeasurementJs = undefined;
-		namespace.measurement = MeasurementJs;
-		namespace.mJs = namespace.MeasurementJs;
-		namespace.measurement.Converter = MeasurementConverter;
-	}
+	if (ns === undefined) {
+        win.measurement = mJs;
+	} else {
+		ns.measurement = mJs;
+		ns.mJs = mJs;
+		ns.measurement.Converter = MeasurementConverter;
+    }
 
     // AMD definition - i.e. for require.js
     if (typeof win.define === "function" && win.define.amd) {
         win.define("measurement", [], function() {
-            return MeasurementJs;
+            return mJs;
         });
     } else if (win.module !== undefined && win.module.exports) {
         win.module.exports.measurementjs = MeasurementJs;
