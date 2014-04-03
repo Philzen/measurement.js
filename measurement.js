@@ -321,9 +321,8 @@
 
     // AMD definition - i.e. for require.js
     if (typeof win.define === "function" && win.define.amd) {
-        define("measurement", [], function() {
-                "use strict";
-                return MeasurementJs;
+        win.define("measurement", [], function() {
+            return MeasurementJs;
         });
     } else if (win.module !== undefined && win.module.exports) {
         win.module.exports.measurementjs = MeasurementJs;
