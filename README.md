@@ -49,9 +49,11 @@ For current and future state of affairs, have a peek at the [Roadmap](ROADMAP.md
 
 ### Get it
 
-Clone from [Github](https://github.com/Philzen/measurement.js/) or install via NPM:
+Currently you only need to download and include [measurement.js](https://raw.githubusercontent.com/Philzen/measurement.js/0-1-stable/measurement.js) in your project.
 
-  ![NPM](https://nodei.co/npm/measurementjs.png?downloads=true&stars=true)
+In case the node package manager is part of your development stack, this may be more comfortable for you:
+
+[![NPM](https://nodei.co/npm/measurementjs.png?downloads=true&stars=true)](https://www.npmjs.org/package/measurementjs)
 
 ### Inspiring projects
 
