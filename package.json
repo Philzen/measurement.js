@@ -1,7 +1,7 @@
 {
   "name": "measurementjs",
-  "version": "0.1.1-alpha",
-  "description": "Nice unit-of-measure conversion",
+  "version": "0.1.1",
+  "description": "Nice unit-of-measure conversion.",
   "readmeFilename": "README.md",
   "main": "measurement.js",
   "repository": {
