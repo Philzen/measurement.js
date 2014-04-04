@@ -1,15 +1,12 @@
 #     MeasurementJs
-[![Code Climate](https://codeclimate.com/github/Philzen/measurement.js.png)]
-(https://codeclimate.com/github/Philzen/measurement.js)
-[![Build Status](https://travis-ci.org/Philzen/measurement.js.svg?branch=0-1-stable)]
-(https://travis-ci.org/Philzen/measurement.js)
-[![devDependency Status](https://david-dm.org/philzen/measurement.js/dev-status.svg?theme=shields.io)]
-(https://david-dm.org/philzen/measurement.js#info=devDependencies) 
+[![Code Climate](https://codeclimate.com/github/Philzen/measurement.js.png)](https://codeclimate.com/github/Philzen/measurement.js)
+[![Build Status](https://travis-ci.org/Philzen/measurement.js.svg?branch=0-1-stable)](https://travis-ci.org/Philzen/measurement.js)
+[![devDependency Status](https://david-dm.org/philzen/measurement.js/dev-status.svg?theme=shields.io)](https://david-dm.org/philzen/measurement.js#info=devDependencies) 
 
 
 Nice unit of measure conversion, featuring:
 - __Simplicity__: an easy to-use, Behaviour driven API 
-- __Sophistication__:  [![Coverage Status](https://coveralls.io/repos/Philzen/measurement.js/badge.png?branch=master)](https://coveralls.io/r/Philzen/measurement.js?branch=master) full test coverage from project day one
+- __Sophistication__:  [![Coverage Status](https://coveralls.io/repos/Philzen/measurement.js/badge.png?branch=0-1-stable)](https://coveralls.io/r/Philzen/measurement.js?branch=0-1-stable) full test coverage from project day one
 - __Quality__: aiming at high performance whilst maintaining a fair trade-off between accuracy 
 - __Adaptability__: Easy to extend for new measurement types (incl. i18n tables)
 
