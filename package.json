@@ -1,6 +1,6 @@
 {
   "name": "measurementjs",
-  "version": "0.1.0",
+  "version": "0.1.1-alpha",
   "description": "Nice unit-of-measure conversion",
   "readmeFilename": "README.md",
   "main": "measurement.js",
@@ -11,9 +11,19 @@
   "license": "MIT",
   "author": "Philzen <phil AT patient-radio.de>",
   "scripts": {
-    "test": "phantomjs test/phantomRunner.js test/index.html"
+    "karma": "./node_modules/.bin/karma start",
+    "test": "echo $TRAVIS$CI | grep truetrue>/dev/null && npm run-script travis-publish || npm run-script karma",
+    "travis-publish": "npm run-script karma && cat ./coverage/*/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
   "devDependencies": {
-    "phantomjs": "^1.9.7-1"
+    "coveralls": "^2.10.0",
+    "karma": "^0.12.3",
+    "karma-cli": "^0.0.4",
+    "karma-coverage": "^0.2.1",
+    "karma-jasmine": "^0.1.5",
+    "karma-requirejs": "^0.2.1",
+    "karma-jshint": ">=0.1",
+    "karma-phantomjs-launcher": "^0.1.3",
+    "phantomjs": "<2"
   }
 }

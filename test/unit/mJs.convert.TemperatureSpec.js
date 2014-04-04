@@ -1,5 +1,7 @@
 'use strict';
 
+define([ 'measurement' ], function( measurement ) {
+
 describe("measurement.Unit.Temperature", function() {
 	expect(measurement.Unit.Temperature).toBeDefined();
 	
@@ -65,4 +67,6 @@ describe("measurement.Unit.Temperature", function() {
 			expect( value ).toBe(-459.67);
 		});
 	});
+});
+
 });

@@ -1,15 +1,15 @@
 #     MeasurementJs
-
+[![Code Climate](https://codeclimate.com/github/Philzen/measurement.js.png)]
+(https://codeclimate.com/github/Philzen/measurement.js)
 [![Build Status](https://travis-ci.org/Philzen/measurement.js.svg?branch=0-1-stable)]
 (https://travis-ci.org/Philzen/measurement.js)
 [![devDependency Status](https://david-dm.org/philzen/measurement.js/dev-status.svg?theme=shields.io)]
 (https://david-dm.org/philzen/measurement.js#info=devDependencies) 
-[![Code Climate](https://codeclimate.com/github/Philzen/measurement.js.png)]
-(https://codeclimate.com/github/Philzen/measurement.js)
+
 
 Nice unit of measure conversion, featuring:
 - __Simplicity__: an easy to-use, Behaviour driven API 
-- __Sophistication__: full test coverage from project day one
+- __Sophistication__:  [![Coverage Status](https://coveralls.io/repos/Philzen/measurement.js/badge.png?branch=master)](https://coveralls.io/r/Philzen/measurement.js?branch=master) full test coverage from project day one
 - __Quality__: aiming at high performance whilst maintaining a fair trade-off between accuracy 
 - __Adaptability__: Easy to extend for new measurement types (incl. i18n tables)
 
@@ -34,14 +34,20 @@ measurement('Speed').convert(10)
 The API definition and all conversion operations are covered by jasmine tests. 
 The test suite can be executed straightaway and easily, for example:
 
- - In the Browser:
-Simply open test/index.html in the browser environment you want to test
+- Test directly in the browser
+Simply open test/index.html in the browser
 
- - CLI-based (using npm)  
-`npm test`
+ - PhantomJs via Karma test driver
+`npm run-script karma`
+That command is just a shorthand for `node_modules/.bin/karma start`. If you have
+`karma-cli` already installed globally, you can also just do `karma start`.
+Karma will startup and run all tests on phantomjs
 
- - CLI-based (w/o npm, you will need to ensure  phantomjs is available yourself)  
-`phantomjs test/phantomRunner.js test/index.html`
+- Any Browser you like with Karma
+    1. Set `singleRun:false` in `./karma.conf.js`
+    2. Start the Karma with `npm run-script karma` or `npm test` or ... (see above)
+    3. navigate any browser you'd like to test to http://localhost:9876
+    2. observe the output on the test console
 
 ### Roadmap
 
@@ -51,9 +57,21 @@ For current and future state of affairs, have a peek at the [Roadmap](ROADMAP.md
 
 Currently you only need to download and include [measurement.js](https://raw.githubusercontent.com/Philzen/measurement.js/0-1-stable/measurement.js) in your project.
 
+latest release - install via NPM:
+
 In case the node package manager is part of your development stack, this may be more comfortable for you:
 
 [![NPM](https://nodei.co/npm/measurementjs.png?downloads=true&stars=true)](https://www.npmjs.org/package/measurementjs)
+
+
+### Currently tested platforms
+
+Please feel free to add your own test results.
+
+    PhantomJS 1.9.7 (Linux): Executed 46 of 46 SUCCESS (0.027 secs / 0.022 secs)
+    Chrome 18.0.1025 (Linux): Executed 46 of 46 SUCCESS (0.06 secs / 0.035 secs)
+    Firefox 28.0.0 (Ubuntu): Executed 46 of 46 SUCCESS (0.037 secs / 0.026 secs)
+
 
 ### Inspiring projects
 

@@ -1,5 +1,7 @@
 "use strict";
 
+define([ 'measurement' ], function( measurement ) {
+
 describe("measurement.Unit.Speed", function() {
 	expect(measurement.Unit.Speed).toBeDefined();
 
@@ -66,4 +68,5 @@ describe("measurement.Unit.Speed", function() {
 		});
 
 	});
+});
 });

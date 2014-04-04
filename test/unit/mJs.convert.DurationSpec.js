@@ -1,5 +1,6 @@
 "use strict";
 
+define([ 'measurement' ], function( measurement ) {
 describe("measurement.Unit.Duration", function() {
 	expect(measurement.Unit.Duration).toBeDefined();
 
@@ -36,4 +37,5 @@ describe("measurement.Unit.Duration", function() {
 		});
 		
 	});
+});
 });
