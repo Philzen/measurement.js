@@ -1,6 +1,6 @@
 {
   "name": "measurementjs",
-  "version": "0.1.1",
+  "version": "0.1.1a",
   "description": "Nice unit-of-measure conversion.",
   "readmeFilename": "README.md",
   "main": "measurement.js",
