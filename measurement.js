@@ -174,10 +174,10 @@
 					 * Following workarounds:
 					 */
 					if (reverse) {
-						return parseFloat((value + 273 + .15).toFixed(10));
+						return parseFloat((value + 273 + 0.15).toFixed(10));
 					}
 					
-					return (value - 273) - .15;
+					return (value - 273) - 0.15;
 				}
 			}
 		},
@@ -239,10 +239,10 @@
                         }
 						
 						if (baseType === inputDef.base) {
-							baseValue = mJs(unitType).convert(value).from(inputDef.key).to(inputDef.base);
+							baseValue = mjs(unitType).convert(value).from(inputDef.key).to(inputDef.base);
 							inputUnit = inputDef.base;
 						} else if (baseType === outputDef.base) {
-							baseValue = mJs(unitType).convert(value).from(outputDef.key).to(outputDef.base);
+							baseValue = mjs(unitType).convert(value).from(outputDef.key).to(outputDef.base);
 							inputUnit = outputDef.base;
 						}
 						
@@ -275,7 +275,7 @@
 		};
 	}
 
-	var mJs = function MeasurementJs(UnitType) {
+	function MeasurementJs(UnitType) {
 		var self = this;
 		/**
 		 * 
@@ -316,24 +316,25 @@
 			convert: convert
 		};
 	}
-    
-    mJs.Unit = UNIT;
+
+    var mjs = MeasurementJs;
+    mjs.Unit = UNIT;
 
 	if (ns === undefined) {
-        win.measurement = mJs;
+        win.measurement = mjs;
 	} else {
-		ns.measurement = mJs;
-		ns.mJs = mJs;
+		ns.measurement = mjs;
+		ns.mJs = mjs;
 		ns.measurement.Converter = MeasurementConverter;
     }
 
     // AMD definition - i.e. for require.js
     if (typeof win.define === "function" && win.define.amd) {
         win.define("measurement", [], function() {
-            return mJs;
+            return mjs;
         });
     } else if (win.module !== undefined && win.module.exports) {
-        win.module.exports.measurementjs = MeasurementJs;
+        win.module.exports.measurementjs = mjs;
     }
 
 })(window, window.mJsNamespace);
