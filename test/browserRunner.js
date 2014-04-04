@@ -30,10 +30,10 @@ require([ 'jasmine-html' ], function() {
         };
         var specs = [ 
             'mJs.ApiSpec',
-            'mJs.CustomNamespaceSpec',
             'mJs.convert.DistanceSpec', 'mJs.convert.DurationSpec',
             'mJs.convert.PressureSpec', 'mJs.convert.SpeedSpec',
-            'mJs.convert.TemperatureSpec'
+            'mJs.convert.TemperatureSpec',
+            'mJs.CustomNamespaceSpec'
         ];
         
         function execJasmine( specs ) {
