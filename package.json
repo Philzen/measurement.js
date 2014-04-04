@@ -1,6 +1,6 @@
 {
   "name": "measurementjs",
-  "version": "0.1.1",
+  "version": "0.1.1-alpha",
   "description": "Nice unit-of-measure conversion",
   "readmeFilename": "README.md",
   "main": "measurement.js",
@@ -22,8 +22,8 @@
     "karma-coverage": "^0.2.1",
     "karma-jasmine": "^0.1.5",
     "karma-requirejs": "^0.2.1",
-    "karma-jshint": "philzen/karma-jshint.git",
+    "karma-jshint": ">=0.1",
     "karma-phantomjs-launcher": "^0.1.3",
-    "phantomjs": "^1.9.7-3"
+    "phantomjs": "<2"
   }
 }
