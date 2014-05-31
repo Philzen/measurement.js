@@ -43,6 +43,13 @@
 			HOUR: 'h',
 			MINUTE: 'm',
 			SECOND: 's'
+		},
+		Mass: {
+			KILOGRAM: 'kg',
+			GRAM: 'g',
+			MILLIGRAM: 'mg',
+			OUNCE: 'oz',
+			POUND: 'lb'
 		}
 	};
 
@@ -196,6 +203,63 @@
 				key: UNIT.Duration.SECOND,
 				base: null,
 				factor: 1
+			}
+		},
+		Mass: {
+			'kg': {
+				key: UNIT.Mass.KILOGRAM,
+				base: UNIT.Mass.GRAM,
+				factor: 1000,
+				name: {
+					en: 'Kilogram',
+				},
+				plural: {
+					en: 'Kilograms'
+				}
+			},
+			'g': {
+				key: UNIT.Mass.GRAM,
+				base: null,
+				factor: 1,
+				name: {
+					en: 'Gram',
+				},
+				plural: {
+					en: 'Grams'
+				}
+			},
+			'mg': {
+				key: UNIT.Mass.MILLIGRAM,
+				base: UNIT.Mass.GRAM,
+				factor: 0.001,
+				name: {
+					en: 'Gram',
+				},
+				plural: {
+					en: 'Grams'
+				}
+			},
+			'oz': {
+				key: UNIT.Mass.OUNCE,
+				base: UNIT.Mass.GRAM,
+				factor: 28.350,
+				name: {
+					en: 'Ounce',
+				},
+				plural: {
+					en: 'Ounces'
+				}
+			},
+			'lb': {
+				key: UNIT.Mass.POUND,
+				base: UNIT.Mass.GRAM,
+				factor: 453.6,
+				name: {
+					en: 'Pound',
+				},
+				plural: {
+					en: 'Pounds'
+				}
 			}
 		}
 	};
