@@ -40,6 +40,9 @@
 			KELVIN: 'k'
 		},
 		Duration: {
+			YEAR: 'year',
+			WEEK: 'week',
+			DAY: 'day',
 			HOUR: 'h',
 			MINUTE: 'm',
 			SECOND: 's'
@@ -189,20 +192,71 @@
 			}
 		},
 		Duration: {
+			'year': {
+				key: UNIT.Duration.YEAR,
+				base: 's',
+				factor: 31557600,
+				name: {
+					en: 'Year',
+				},
+				plural: {
+					en: 'Years'
+				}
+			},
+			'week': {
+				key: UNIT.Duration.WEEK,
+				base: 's',
+				factor: 604800,
+				name: {
+					en: 'Week',
+				},
+				plural: {
+					en: 'Weeks'
+				}
+			},
+			'day': {
+				key: UNIT.Duration.DAY,
+				base: 's',
+				factor: 86400,
+				name: {
+					en: 'Day',
+				},
+				plural: {
+					en: 'Days'
+				}
+			},
 			'h': {
 				key: UNIT.Duration.HOUR,
 				base: 's',
-				factor: 3600
+				factor: 3600,
+				name: {
+					en: 'Hour',
+				},
+				plural: {
+					en: 'Hours'
+				}
 			},
 			'm': {
 				key: UNIT.Duration.MINUTE,
 				base: 's',
-				factor: 60
+				factor: 60,
+				name: {
+					en: 'Minute',
+				},
+				plural: {
+					en: 'Minutes'
+				}
 			},
 			's': {
 				key: UNIT.Duration.SECOND,
 				base: null,
-				factor: 1
+				factor: 1,
+				name: {
+					en: 'Second',
+				},
+				plural: {
+					en: 'Seconds'
+				}
 			}
 		},
 		Mass: {
