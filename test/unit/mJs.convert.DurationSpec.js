@@ -35,6 +35,18 @@ describe("measurement.Unit.Duration", function() {
 				convertDuration(2).from(durationUnit.HOUR).to(durationUnit.SECOND)
 				).toBe(7200);
 		});
+
+		it("returns 1 for convert( 365.25 ).from( Duration.DAY ).to( Duration.YEAR )", function() {
+			expect(
+				convertDuration(365.25).from(durationUnit.DAY).to(durationUnit.YEAR)
+				).toBe(1);
+		});
+
+		it("returns 7 for convert( 1 ).from( Duration.WEEK ).to( Duration.DAY )", function() {
+			expect(
+				convertDuration(1).from(durationUnit.WEEK).to(durationUnit.DAY)
+				).toBe(7);
+		});
 		
 	});
 });

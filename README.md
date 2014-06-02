@@ -23,6 +23,10 @@ measurement('Distance').convert(1)
 measurement('Speed').convert(10)
     .from(measurement.Unit.Speed.KILOMETRE_PER_HOUR)
     .to(measurement.Unit.Speed.METRES_PER_SECOND);       // returns 36
+
+measurement('Mass').convert(1)
+    .from(measurement.Unit.Mass.KILOGRAM)
+    .to(measurement.Unit.Mass.GRAM);                     // returns 1000
 ```
 
 
