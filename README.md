@@ -22,7 +22,7 @@ measurement('Distance').convert(1)
     
 measurement('Speed').convert(10)
     .from(measurement.Unit.Speed.KILOMETRE_PER_HOUR)
-    .to(measurement.Unit.Speed.METRES_PER_SECOND);       // returns 36
+    .to(measurement.Unit.Speed.METRE_PER_SECOND);       // returns 2.7777777777777777
 ```
 
 
