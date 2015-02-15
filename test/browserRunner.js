@@ -28,14 +28,14 @@ require([ 'jasmine-html' ], function() {
         jasmineEnv.specFilter = function( spec ) {
             return htmlReporter.specFilter(spec);
         };
-        var specs = [ 
+        var specs = [
             'mJs.ApiSpec',
             'mJs.convert.DistanceSpec', 'mJs.convert.DurationSpec',
             'mJs.convert.PressureSpec', 'mJs.convert.SpeedSpec',
-            'mJs.convert.TemperatureSpec',
+            'mJs.convert.TemperatureSpec', 'mJs.convert.VolumeSpec',
             'mJs.CustomNamespaceSpec'
         ];
-        
+
         function execJasmine( specs ) {
             require(specs, function() {
                 jasmineEnv.execute();
@@ -51,7 +51,7 @@ require([ 'jasmine-html' ], function() {
             console.log('Executing Tests...');
             execJasmine(specs);
         }
-        
+
         if (document.readyState === "complete")
             return onLoad();
 

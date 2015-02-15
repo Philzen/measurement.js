@@ -1,13 +1,13 @@
 
 /**
  * Measurement.Js
- * 
+ *
  * Unit-of-Measure conversion made easy.
- * 
+ *
  * @author Philipp Austermann
  * @version 0.1
  * @example text measurementJs.convert(3.5).from(DISTANCE.KMH).to(DISTANCE.M); or  measurementJs.convert(3.5).from(DISTANCE.KMH).to(DISTANCE.M);
- * 
+ *
  * @param {Object} ns
  * @returns {undefined}
  */
@@ -50,6 +50,13 @@
 			MILLIGRAM: 'mg',
 			OUNCE: 'oz',
 			POUND: 'lb'
+		},
+		Volume: {
+			LITER: 'l',
+			MILLILITER: 'ml',
+			CUP: 'c',
+			TABLESPOON: 'tbsp',
+			TEASPOON: 'tsp'
 		}
 	};
 
@@ -177,13 +184,13 @@
 					/**
 					 * Really strange rounding error:
 					 * (100 - 273.15) gives -173.14999999999998 (tested in Chrome 26.0.1410.63)
-					 * 
+					 *
 					 * Following workarounds:
 					 */
 					if (reverse) {
 						return parseFloat((value + 273 + 0.15).toFixed(10));
 					}
-					
+
 					return (value - 273) - 0.15;
 				}
 			}
@@ -261,6 +268,63 @@
 					en: 'Pounds'
 				}
 			}
+		},
+		Volume: {
+			'l': {
+				key: UNIT.Volume.LITER,
+				base: null,
+				factor: 1,
+				name: {
+					en: 'Liter',
+				},
+				plural: {
+					en: 'Liters'
+				}
+			},
+			'ml': {
+				key: UNIT.Volume.MILLILITER,
+				base: UNIT.Volume.LITER,
+				factor: .001,
+				name: {
+					en: 'Milliliter',
+				},
+				plural: {
+					en: 'Milliliters'
+				}
+			},
+			'c': {
+				key: UNIT.Volume.CUP,
+				base: UNIT.Volume.LITER,
+				factor: 0.236588,
+				name: {
+					en: 'Cup',
+				},
+				plural: {
+					en: 'Cups'
+				}
+			},
+			'tbsp': {
+				key: UNIT.Volume.TABLESPOON,
+				base: UNIT.Volume.LITER,
+				factor: 0.0147868,
+				name: {
+					en: 'Tablespoon',
+				},
+				plural: {
+					en: 'Tablespoons'
+				}
+			},
+			'tsp': {
+				key: UNIT.Volume.TEASPOON,
+				base: UNIT.Volume.LITER,
+				factor: 0.00492892,
+				name: {
+					en: 'Teaspoon',
+				},
+				plural: {
+					en: 'Teaspoons'
+				}
+			}
 		}
 	};
 
@@ -274,7 +338,7 @@
 			if (DEFINITIONS[unitType]) {
 				var inputDef = DEFINITIONS[unitType][inputUnit],
 					outputDef = DEFINITIONS[unitType][outputUnit];
-				
+
 				if (inputDef && outputDef) {
 
 					if (inputDef.base === outputUnit) {
@@ -295,13 +359,13 @@
 
 						/**
 						 * TODO use direct reconversion factors, while trading off the higher accuracy / performance
-						 * vs. larger configuration array/file size 
+						 * vs. larger configuration array/file size
 						 */
 						var baseType = inputDef.base || outputDef.base, baseValue;
 						if (typeof baseType === 'undefined') {
 							return false;
                         }
-						
+
 						if (baseType === inputDef.base) {
 							baseValue = mjs(unitType).convert(value).from(inputDef.key).to(inputDef.base);
 							inputUnit = inputDef.base;
@@ -309,11 +373,11 @@
 							baseValue = mjs(unitType).convert(value).from(outputDef.key).to(outputDef.base);
 							inputUnit = outputDef.base;
 						}
-						
+
 						if (baseType === UNIT.Temperature.CELSIUS) {
 							return parseFloat(self.convert(baseValue).toFixed(10));
                         }
-						
+
 						return self.convert(baseValue);
 					}
 				}
@@ -342,7 +406,7 @@
 	function MeasurementJs(UnitType) {
 		var self = this;
 		/**
-		 * 
+		 *
 		 * @param {type} value
 		 * @returns {MeasurementConverter}
 		 */
