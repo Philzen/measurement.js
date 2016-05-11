@@ -177,13 +177,13 @@
 					/**
 					 * Really strange rounding error:
 					 * (100 - 273.15) gives -173.14999999999998 (tested in Chrome 26.0.1410.63)
-					 * 
+					 *
 					 * Following workarounds:
 					 */
 					if (reverse) {
 						return parseFloat((value + 273 + 0.15).toFixed(10));
 					}
-					
+
 					return (value - 273) - 0.15;
 				}
 			}
@@ -274,7 +274,7 @@
 			if (DEFINITIONS[unitType]) {
 				var inputDef = DEFINITIONS[unitType][inputUnit],
 					outputDef = DEFINITIONS[unitType][outputUnit];
-				
+
 				if (inputDef && outputDef) {
 
 					if (inputDef.base === outputUnit) {
@@ -295,13 +295,13 @@
 
 						/**
 						 * TODO use direct reconversion factors, while trading off the higher accuracy / performance
-						 * vs. larger configuration array/file size 
+						 * vs. larger configuration array/file size
 						 */
 						var baseType = inputDef.base || outputDef.base, baseValue;
 						if (typeof baseType === 'undefined') {
 							return false;
                         }
-						
+
 						if (baseType === inputDef.base) {
 							baseValue = mjs(unitType).convert(value).from(inputDef.key).to(inputDef.base);
 							inputUnit = inputDef.base;
@@ -309,11 +309,11 @@
 							baseValue = mjs(unitType).convert(value).from(outputDef.key).to(outputDef.base);
 							inputUnit = outputDef.base;
 						}
-						
+
 						if (baseType === UNIT.Temperature.CELSIUS) {
 							return parseFloat(self.convert(baseValue).toFixed(10));
                         }
-						
+
 						return self.convert(baseValue);
 					}
 				}
@@ -342,13 +342,17 @@
 	function MeasurementJs(UnitType) {
 		var self = this;
 		/**
-		 * 
+		 *
 		 * @param {type} value
 		 * @returns {MeasurementConverter}
 		 */
 		var convert = function(value) {
 			var valueToConvert = value,
 				converter = new MeasurementConverter(UnitType);
+
+			if(typeof(value) == 'undefined' || value == null) {
+				throw new Error('convert() argument is null or undefined');
+			}
 
 			function readyToConvert() {
 				return converter.inputUnit !== null && converter.outputUnit !== null;
