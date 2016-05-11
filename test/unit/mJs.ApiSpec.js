@@ -12,6 +12,14 @@ define([ 'measurement' ], function( measurement ) {
             expect(typeof measurement().convert).toBe('function');
         });
 
+        describe("measurement().convert(null/undefined)", function() {
+           it("throws an error", function() {
+               var ex = new Error("convert() argument is null or undefined");
+               expect(function() { measurement().convert(null) }).toThrow(ex);
+               expect(function() { measurement().convert(undefined) }).toThrow(ex);
+           })
+        });
+
         describe("measurement().convert(someValue)", function() {
             var testUnitType = 'Distance',
                 testValue = 42,
