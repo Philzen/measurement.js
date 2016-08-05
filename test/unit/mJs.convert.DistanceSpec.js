@@ -31,6 +31,11 @@ define(['measurement'], function (measurement) {
                         .from(dc.MILLIMETRE).to(dc.METRE)).toBe(1);
             });
 
+            it('100 Distance.MILLIMETRES equal 10 Distance.CENTIMETRES', function () {
+                expect(measurement('Distance').convert(100)
+                        .from(dc.MILLIMETRE).to(dc.CENTIMETRE)).toBe(10);
+            });
+
             it('254 Distance.MILLIMETRES equal 10 Distance.INCH', function () {
                 expect(measurement('Distance').convert(254).from(dc.MILLIMETRE)
                         .to(dc.INCH)).toBe(10);

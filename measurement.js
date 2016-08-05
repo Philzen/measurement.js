@@ -1,13 +1,13 @@
 
 /**
  * Measurement.Js
- * 
+ *
  * Unit-of-Measure conversion made easy.
- * 
+ *
  * @author Philipp Austermann
  * @version 0.1
  * @example text measurementJs.convert(3.5).from(DISTANCE.KMH).to(DISTANCE.M); or  measurementJs.convert(3.5).from(DISTANCE.KMH).to(DISTANCE.M);
- * 
+ *
  * @param {Object} ns
  * @returns {undefined}
  */
@@ -23,6 +23,7 @@
 		},
 		Distance: {
 			MILLIMETRE: 'mm',
+      CENTIMETRE: 'cm',
 			INCH: 'in',
 			KILOMETRE: 'km',
 			MILE: 'M',
@@ -108,6 +109,11 @@
 				base: 'm',
 				factor: 0.001
 			},
+			'cm': {
+				key: UNIT.Distance.CENTIMETRE,
+				base: 'm',
+				factor: 0.01
+			},
 			'in': {
 				key: UNIT.Distance.INCH,
 				base: 'm',
@@ -177,13 +183,13 @@
 					/**
 					 * Really strange rounding error:
 					 * (100 - 273.15) gives -173.14999999999998 (tested in Chrome 26.0.1410.63)
-					 * 
+					 *
 					 * Following workarounds:
 					 */
 					if (reverse) {
 						return parseFloat((value + 273 + 0.15).toFixed(10));
 					}
-					
+
 					return (value - 273) - 0.15;
 				}
 			}
@@ -274,7 +280,7 @@
 			if (DEFINITIONS[unitType]) {
 				var inputDef = DEFINITIONS[unitType][inputUnit],
 					outputDef = DEFINITIONS[unitType][outputUnit];
-				
+
 				if (inputDef && outputDef) {
 
 					if (inputDef.base === outputUnit) {
@@ -295,13 +301,13 @@
 
 						/**
 						 * TODO use direct reconversion factors, while trading off the higher accuracy / performance
-						 * vs. larger configuration array/file size 
+						 * vs. larger configuration array/file size
 						 */
 						var baseType = inputDef.base || outputDef.base, baseValue;
 						if (typeof baseType === 'undefined') {
 							return false;
                         }
-						
+
 						if (baseType === inputDef.base) {
 							baseValue = mjs(unitType).convert(value).from(inputDef.key).to(inputDef.base);
 							inputUnit = inputDef.base;
@@ -309,11 +315,11 @@
 							baseValue = mjs(unitType).convert(value).from(outputDef.key).to(outputDef.base);
 							inputUnit = outputDef.base;
 						}
-						
+
 						if (baseType === UNIT.Temperature.CELSIUS) {
 							return parseFloat(self.convert(baseValue).toFixed(10));
                         }
-						
+
 						return self.convert(baseValue);
 					}
 				}
@@ -342,7 +348,7 @@
 	function MeasurementJs(UnitType) {
 		var self = this;
 		/**
-		 * 
+		 *
 		 * @param {type} value
 		 * @returns {MeasurementConverter}
 		 */
