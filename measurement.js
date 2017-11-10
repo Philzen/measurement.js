@@ -401,4 +401,4 @@
         win.module.exports.measurementjs = mjs;
     }
 
-})(window, window.mJsNamespace);
+})(window, (window.mJsNamespace || window.mJsNamespace = {}));
